@@ -14,6 +14,7 @@ const config: Config = {
     extend: {
       colors: {
         bgColor: "#383838",
+        dividerColor: "#222"
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],

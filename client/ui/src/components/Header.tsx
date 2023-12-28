@@ -3,7 +3,7 @@ import Image from 'next/image';
 const Header: React.FC = () => {
     return (
         <>
-        <div className='flex pt-12'>
+        <div className='flex pt-9'>
             <Image src='/logo.png' alt='PixelAngelo logo' width={100} height={100} />
             <div className='flex flex-col self-center gap-1'>
                 <h1 className='text-3xl font-poppinsBold tracking-customSpacing'>Pixel<span className='text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-pink-600'>Angelo</span></h1>
