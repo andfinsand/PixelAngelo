@@ -15,11 +15,19 @@ const config: Config = {
       colors: {
         bgColor: "#383838",
         dividerColor: "#282828",
-        footerColor: "#8B8B8B"
+        dottedColor: "#8E8E8E",
+        footerColor: "#8B8B8B",
+        uploadAreaColor: "#4E4E4E"
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
         poppinsBold: ['PoppinsBold', 'sans-serif'],
+      },
+      height: {
+        '400': '400px',
+      },
+      width: {
+        '600': '600px',
       },
     },
   },
