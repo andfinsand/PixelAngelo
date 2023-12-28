@@ -7,8 +7,8 @@ export default function Home() {
       <head>
         <title>PixelAngelo</title>
         <meta
-          name="description"
-          content="Upscale images using RealESRGAN"
+          name='description'
+          content='Upscale images using RealESRGAN'
         />
       </head>
       <main className='flex min-h-screen flex-col items-center font-poppins bg-bgColor text-white'>

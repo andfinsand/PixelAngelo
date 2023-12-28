@@ -7,12 +7,17 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    letterSpacing: {
+      wide: '.025em',
+      customSpacing: '.35em',
+    },
     extend: {
       colors: {
         bgColor: "#383838",
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
+        poppinsBold: ['PoppinsBold', 'sans-serif'],
       },
     },
   },

@@ -7,7 +7,12 @@
   src: url('./fonts/poppins-font/files/poppins-latin-300.woff');
 }
 
-body {
+@font-face {
+  font-family: 'PoppinsBold';
+  src: url('./fonts/poppins-font/files/poppins-latin-500.woff');
+}
+
+/* body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -15,4 +20,4 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-}
+} */
