@@ -7,7 +7,7 @@ import Divider from '../components/Divider'
 export default function Home() {
   return (
     <>
-
+      {/* Metadata */}
       <Head>
         <title>PixelAngelo</title>
         <meta
@@ -16,20 +16,24 @@ export default function Home() {
         />
       </Head>
 
-      <main className='flex min-h-screen flex-col items-center justify-between font-poppins bg-bgColor text-white'>
+      <main className='flex min-h-screen flex-col items-center justify-between bg-bgColor text-white font-poppins'>
+
         {/* Header */}
         <div className='flex flex-col items-center w-screen'>
           <Header />
           <Divider />
         </div>
+
         {/* Main content */}
         <div className='flex flex-col'>
           <Main />
         </div>
+
         {/* Footer */}
         <div className='flex flex-col items-center w-screen'>
           <Divider />
           <Footer />
+
         </div>
       </main>
     </>

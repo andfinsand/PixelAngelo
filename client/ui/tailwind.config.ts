@@ -16,7 +16,11 @@ const config: Config = {
         bgColor: "#383838",
         dividerColor: "#282828",
         dottedColor: "#8E8E8E",
+        fileTypeContainer: "#696969",
         footerColor: "#8B8B8B",
+        grayFont: "#B8B8B8",
+        logoPink: "#db36a4",
+        logoYellow: "#FFD303",
         uploadAreaColor: "#4E4E4E"
       },
       fontFamily: {

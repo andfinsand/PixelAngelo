@@ -16,3 +16,14 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* Button hover effect */
+.btn-hover-effect {
+  background-image: linear-gradient(to right, #FFD303 0%, #db36a4  51%, #FFD303 100%);
+            transition: 0.5s;
+            background-size: 200% auto;
+          }
+
+.btn-hover-effect:hover {
+  background-position: right center; /* change the direction of the change here */
+}
