@@ -19,7 +19,7 @@ body {
 
 /* Button hover effect */
 .btn-hover-effect {
-  background-image: linear-gradient(to right, #FFD303 0%, #db36a4  51%, #FFD303 100%);
+  background-image: linear-gradient(to right, #FFD303 0%, #db36a4  49%, #FFD303 100%);
             transition: 0.5s;
             background-size: 200% auto;
           }

@@ -13,7 +13,8 @@ const config: Config = {
     },
     extend: {
       colors: {
-        bgColor: "#383838",
+        bgColorFrom: "#383838",
+        bgColorTo: "#3A3A3A",
         dividerColor: "#282828",
         dottedColor: "#8E8E8E",
         fileTypeContainer: "#696969",

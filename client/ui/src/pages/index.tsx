@@ -16,7 +16,7 @@ export default function Home() {
         />
       </Head>
 
-      <main className='flex min-h-screen flex-col items-center justify-between bg-bgColor text-white font-poppins'>
+      <main className='flex min-h-screen flex-col items-center justify-between bg-gradient-to-br from-bgColorFrom to-bgColorTo text-white font-poppins'>
 
         {/* Header */}
         <div className='flex flex-col items-center w-screen'>
