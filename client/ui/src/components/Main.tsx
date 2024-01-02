@@ -1,11 +1,63 @@
+import { useState } from "react";
 import UploadButton from './buttons/UploadButton'
 
 const Main: React.FC = () => {
+    const [file, setFile] = useState<File | null>(null);
+    const [dragIsActive, setDragIsActive] = useState<boolean>(false);
+
+    const handleFileUpload = (file: File) => {
+        setFile(file);
+    }
+
+    // Drag and Drop files
+    // Initial drag event when file enters the dropzone
+    function handleDragEnter(e: any) {
+        e.preventDefault();
+        e.stopPropagation();
+        setDragIsActive(true);
+    }
+
+    // Maintain drag event
+    function handleDragOver(e: any) {
+        e.preventDefault();
+        e.stopPropagation();
+        setDragIsActive(true);
+    }
+
+    // Stop drag event if no longer hovering
+    function handleDragLeave(e: any) {
+        e.preventDefault();
+        e.stopPropagation();
+        setDragIsActive(false);
+    }
+
+    // Trigger API once file is dropped
+    function handleDrop(e: any) {
+        e.preventDefault();
+        e.stopPropagation();
+        setDragIsActive(false);
+        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+            handleFileUpload(e.dataTransfer.files[0]); // Trigger API
+        }
+    }
+
     return (
         <>
             {/* Dropzone */}
-            <div className='flex flex-col justify-center self-center rounded-lg bg-dropZoneColor w-600 h-400 m-10 p-6' style={{ boxShadow: 'rgba(0, 0, 0, 0.15) 0px 10px 20px, rgba(0, 0, 0, 0.1) 0px 3px 6px' }}>
-                {/* Dotted border */}
+            <form
+                className={`${
+                    dragIsActive ? "bg-dropZoneColor brightness-105" : "bg-dropZoneColor"
+                } 'flex flex-col justify-center self-center rounded-lg w-600 h-400 m-10 p-6`}
+                style={{ boxShadow: 'rgba(0, 0, 0, 0.15) 0px 10px 20px, rgba(0, 0, 0, 0.1) 0px 3px 6px' }}
+
+                // Drag and drop handlers
+                onDragEnter={handleDragEnter}
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
+                onDrop={handleDrop}
+            >
+
+                {/* Form - Dotted border */}
                 <div className='flex justify-center border-2 border-dotted border-dottedColor rounded-md w-full h-full'>
 
                     {/* Content */}
@@ -13,7 +65,7 @@ const Main: React.FC = () => {
                         <div className='flex flex-col'>
 
                             {/* Upload button */}
-                            <UploadButton />
+                            <UploadButton setFile={setFile} />
 
                             <div className='text-center text-grayFont text-xs mt-5'>or drop image here</div>
 
@@ -29,7 +81,7 @@ const Main: React.FC = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </>
     );
 }

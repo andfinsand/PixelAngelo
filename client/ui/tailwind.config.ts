@@ -22,7 +22,7 @@ const config: Config = {
         grayFont: "#B8B8B8",
         logoPink: "#db36a4",
         logoYellow: "#FFD303",
-        dropZoneColor: "#4E4E4E"
+        dropZoneColor: "#4E4E4E",
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
