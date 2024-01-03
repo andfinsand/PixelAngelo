@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-const UploadButton: React.FC<{ setFile: React.Dispatch<React.SetStateAction<File | null>> }> = ({ setFile }) => {
+const UploadButton: React.FC<{ setFile: React.Dispatch<React.SetStateAction<File | null>>, processImageFile: (file: File) => void }> = ({ setFile, processImageFile }) => {
     const imageInputRef = useRef<any>(null);
 
     // Open file explorer to view image files
@@ -15,7 +15,7 @@ const UploadButton: React.FC<{ setFile: React.Dispatch<React.SetStateAction<File
         if (e.target.files && e.target.files[0]) {
             const file = e.target.files[0];
             setFile(file);
-            //  handleFileUpload(file); // Trigger the fetch API immediately after the file is added
+            processImageFile(file); // Trigger the fetch API immediately after the file is added
         }
     }
 

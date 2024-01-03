@@ -62,7 +62,7 @@ const Main: React.FC = () => {
                 onDrop={handleDrop}
             >
 
-                {/* Form - Dotted border */}
+                {/* Dotted border */}
                 <div className='flex justify-center border-2 border-dotted border-dottedColor rounded-md w-full h-full'>
 
                     {/* Content */}
@@ -79,7 +79,7 @@ const Main: React.FC = () => {
                             ) : (
                                 <>
                                     {/* Upload button */}
-                                    <UploadButton setFile={setFile} />
+                                    <UploadButton setFile={setFile} processImageFile={processImageFile} />
 
                                     <div className='text-center text-grayFont text-xs mt-5'>or drop image here</div>
 
@@ -93,20 +93,6 @@ const Main: React.FC = () => {
                                     </div>
                                 </>
                             )}
-
-                            {/* Upload button */}
-                            {/* <UploadButton setFile={setFile} />
-
-                            <div className='text-center text-grayFont text-xs mt-5'>or drop image here</div> */}
-
-                            {/* File parameters */}
-                            {/* <div className='flex text-grayFont text-xs mt-8 gap-2.5'>
-                                <div className='bg-fileTypeContainer rounded-md py-1 px-2'>png</div>
-                                <div className='bg-fileTypeContainer rounded-md py-1 px-2'>jpeg</div>
-                                <div className='bg-fileTypeContainer rounded-md py-1 px-2'>webp</div>
-                                <div className='bg-fileTypeContainer rounded-md py-1 px-2'>svg</div>
-                                <div className='self-center'>up to 1000 x 1000px</div>
-                            </div> */}
 
                         </div>
                     </div>
