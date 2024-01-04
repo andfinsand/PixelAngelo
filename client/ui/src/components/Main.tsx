@@ -112,9 +112,9 @@ const Main: React.FC = () => {
             {!upscaledSrc && (
                 <form
                     className={`${
-                        dragIsActive ? "bg-dropZoneColor brightness-105" : "bg-dropZoneColor"
+                        dragIsActive ? "bg-dropZoneColorFrom brightness-105" : "bg-gradient-to-br from-dropZoneColorFrom to-dropZoneColorTo"
                     } 'flex flex-col justify-center self-center rounded-lg w-600 h-400 m-10 p-6`}
-                    style={{ boxShadow: 'rgba(0, 0, 0, 0.15) 0px 10px 20px, rgba(0, 0, 0, 0.1) 0px 3px 6px' }}
+                    style={{ boxShadow: 'rgba(0, 0, 0, 0.2) 0px 10px 20px, rgba(0, 0, 0, 0.15) 0px 3px 6px' }}
 
                     // Drag and drop handlers
                     onDragEnter={handleDragEnter}
