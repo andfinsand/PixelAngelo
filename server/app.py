@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 import os
 import uuid
 
+from upscaler import upscale_image
+
 app = Flask(__name__)
 CORS(app)
 
