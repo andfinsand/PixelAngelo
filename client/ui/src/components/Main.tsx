@@ -51,7 +51,7 @@ const Main: React.FC = () => {
                     setUpscaledSrc(upscaledSrc);
                     const getOriginalSrc = data["original_path"]
                     setOriginalSrc(getOriginalSrc)
-                    const originalFileName = data["original_name"]
+                    const originalFileName = data["unique_name"]
                     setOriginalFileName(originalFileName)
 
                     // Introduce a delay before setting loader to false to prevent screen flash
