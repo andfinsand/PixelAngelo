@@ -1,5 +1,6 @@
 import { useState } from "react";
-import UploadButton from './buttons/UploadButton'
+import UploadButton from "./buttons/UploadButton"
+import ImageComparison from "./ImageComparison";
 
 const Main: React.FC = () => {
     const [file, setFile] = useState<File | null>(null);
@@ -8,10 +9,21 @@ const Main: React.FC = () => {
     const [originalFileName, setOriginalFileName] = useState<string>("");
     const [dragIsActive, setDragIsActive] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [fileError, setFileError] = useState<string>('');
+    const [resolutionError, setResolutionError] = useState<string>("");
+    const [typeError, setTypeError] = useState<string>('');
 
     // Send image file to backend for upscaling
     function processImageFile(file: File) {
+
+        // Reset error states
+        setTypeError("")
+        setResolutionError("")
+
+        // File type checkpoint for drag event
+        if (!file.type.startsWith('image/')) {
+            setTypeError('File type is not supported');
+            return;
+        }
 
         // Show loader
         setIsLoading(true);
@@ -20,13 +32,13 @@ const Main: React.FC = () => {
         const image = new Image();
         image.src = URL.createObjectURL(file);
 
-        // ASYNC - Display image after fetch
+        // Async - Display image after fetch
         image.onload = function() {
 
             // Maximum resolution checkpoint - keep within function to avoid async issues
             if (image.width > 1000 || image.height > 1000) {
                 setIsLoading(false);
-                setFileError('Image resolution exceeds the maximum allowed size of 1000 x 1000px');
+                setResolutionError('Image resolution exceeds the maximum allowed size of 1000 x 1000px');
             } else {
 
                 // Server API
@@ -134,14 +146,20 @@ const Main: React.FC = () => {
                                 {isLoading ? (
                                     <>
                                         <div className='flex self-center loader'></div>
-                                        <div className='text-center text-sm text-grayFont mt-8 mb-2'>Image upscaling...</div>
+                                        <div className='text-center text-sm text-grayFont mt-8 mb-2'>Upscaling...</div>
                                         <div className='text-center text-xs text-grayFont'>Larger images may take up to 3 minutes to complete</div>
                                     </>
                                 ) : (
                                     <>
+
+                                        {/* File type error message */}
+                                        {typeError &&
+                                            <p className='absolute bottom-14 left-[199px] text-yellow-500 text-xs'>{typeError}</p>
+                                        }
+
                                         {/* Resolution error message */}
-                                        {fileError &&
-                                            <p className='absolute bottom-14 left-[69px] text-yellow-500 text-xs'>{fileError}</p>
+                                        {resolutionError &&
+                                            <p className='absolute bottom-14 left-[69px] text-yellow-500 text-xs'>{resolutionError}</p>
                                         }
 
                                         {/* Upload button */}
@@ -165,6 +183,10 @@ const Main: React.FC = () => {
                     </div>
                 </form>
             )}
+
+            {/* Image outputs */}
+            <ImageComparison upscaledSrc={upscaledSrc} setUpscaledSrc={setUpscaledSrc} originalFileName={originalFileName} originalSrc={originalSrc} />
+
         </>
     );
 }
