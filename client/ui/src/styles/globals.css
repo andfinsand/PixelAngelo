@@ -107,3 +107,10 @@ body {
     transform: translate(0, 0) rotateX(0) rotateY(360deg);
   }
 }
+
+/* Comparison slider */
+.slider-img {
+  width: 800px !important;
+  max-height: 800px !important;
+  object-fit: contain !important; /* This ensures the image maintains its aspect ratio */
+}

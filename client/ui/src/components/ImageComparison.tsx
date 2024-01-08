@@ -1,5 +1,4 @@
-import { useState } from "react";
-import Image from "next/image";
+import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
 import NewImageButton from "./buttons/NewImageButton";
 import DownloadButton from "./buttons/DownloadButton";
 
@@ -15,41 +14,20 @@ const ImageComparison: React.FC<ImageComparisonProps> = ({upscaledSrc, setUpscal
     return (
         <div className='flex flex-col justify-center items-center'>
             { upscaledSrc && (
-                <div className='relative'>
-                    {/* <div className="flex flex-col relative"> */}
+                <div className='relative mt-5'>
 
-                        {/* Upscaled image */}
-                        <div className='absolute shadow-customShadow' style={{pointerEvents: 'none'}}> {/* this line may need an "absolute" with "relative" in the parent div, once the two images are aligned over each other */}
-                            <Image
-                                src={upscaledSrc}
-                                // onClick={handleImageClick}
-                                alt='Upscaled Image'
-                                width={600}
-                                height={600}
-                                style={{
-                                    overflow: 'hidden',
-                                    // clipPath: `inset(0 0 0 ${sliderPosition}px)`
-                                }}
-                            />
-                        </div>
+                    {/* Image comparison */}
+                    <ReactCompareSlider
+                        itemOne={<ReactCompareSliderImage className="slider-img" src={originalSrc} alt="Original Image" />}
+                        itemTwo={<ReactCompareSliderImage className="slider-img" src={upscaledSrc} alt='Upscaled Image' />}
+                        className='shadow-customShadow'
+                    />
 
-                        {/* Original image */}
-                        <div >
-                            <Image
-                                src={originalSrc}
-                                // onClick={handleImageClick}
-                                alt="Original Image"
-                                width={600}
-                                height={600}
-                            />
-                        </div>
+                    {/* Download upscaled image */}
+                    <DownloadButton upscaledSrc={upscaledSrc} originalFileName={originalFileName} />
 
-                        {/* Download upscaled image */}
-                        <DownloadButton upscaledSrc={upscaledSrc} originalFileName={originalFileName} />
-
-                        {/* Upscale a new image */}
-                        <NewImageButton clearImage={setUpscaledSrc} />
-                    {/* </div> */}
+                    {/* Upscale a new image */}
+                    <NewImageButton clearImage={setUpscaledSrc} />
 
                 </div>
             )}
