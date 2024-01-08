@@ -125,8 +125,7 @@ const Main: React.FC = () => {
                 <form
                     className={`${
                         dragIsActive ? "bg-dropZoneColorFrom brightness-105" : "bg-gradient-to-br from-dropZoneColorFrom to-dropZoneColorTo"
-                    } 'flex flex-col justify-center self-center rounded-lg w-600 h-400 m-10 p-6`}
-                    style={{ boxShadow: 'rgba(0, 0, 0, 0.2) 0px 10px 20px, rgba(0, 0, 0, 0.15) 0px 3px 6px' }}
+                    } 'flex flex-col justify-center self-center rounded-lg w-600 h-400 m-10 p-6 shadow-customShadow`}
 
                     // Drag and drop handlers
                     onDragEnter={handleDragEnter}
@@ -146,7 +145,7 @@ const Main: React.FC = () => {
                                 {isLoading ? (
                                     <>
                                         <div className='flex self-center loader'></div>
-                                        <div className='text-center text-sm text-grayFont mt-8 mb-2'>Upscaling...</div>
+                                        <div className='text-center text-sm text-grayFont mt-12 mb-2'>Upscaling...</div>
                                         <div className='text-center text-xs text-grayFont'>Larger images may take up to 3 minutes to complete</div>
                                     </>
                                 ) : (
@@ -175,6 +174,7 @@ const Main: React.FC = () => {
                                             <div className='bg-fileTypeContainer rounded-md py-1 px-2'>svg</div>
                                             <div className='self-center'>up to 1000 x 1000px</div>
                                         </div>
+
                                     </>
                                 )}
 

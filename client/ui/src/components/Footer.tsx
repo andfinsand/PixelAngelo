@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
                         href='https://www.andrewfinsand.dev/'
                         target='_blank'
                         aria-label="open link to Andrew Finsand's portfolio"
-                        className='duration-200 hover:text-white'
+                        className='hover:text-white duration-200'
                     >
                         Andrew Finsand
                     </a>

@@ -1,7 +1,9 @@
 import { useState } from "react";
-import Image from 'next/image';
+import Image from "next/image";
+import NewImageButton from "./buttons/NewImageButton";
+import DownloadButton from "./buttons/DownloadButton";
 
-interface ImageComparisonProps {
+type ImageComparisonProps = {
     upscaledSrc: string;
     setUpscaledSrc: React.Dispatch<React.SetStateAction<string>>;
     originalFileName: string;
@@ -10,43 +12,46 @@ interface ImageComparisonProps {
 
 const ImageComparison: React.FC<ImageComparisonProps> = ({upscaledSrc, setUpscaledSrc, originalFileName, originalSrc}) => {
 
-    // Download file with unique file name
-    const handleDownload = () => {
-        fetch(upscaledSrc)
-        .then((response) => response.blob())
-        .then((blob) => {
-            const url = window.URL.createObjectURL(new Blob([blob]));
-            const link = document.createElement('a');
-            link.href = url;
-            // download the upscaled file with the name of the file being the variable "filenName"
-            link.setAttribute('download', originalFileName);
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        });
-    };
-
     return (
-        <div className="flex flex-col justify-center items-center w-[800px]">
+        <div className='flex flex-col justify-center items-center'>
             { upscaledSrc && (
-                <>
+                <div className='relative'>
+                    {/* <div className="flex flex-col relative"> */}
 
-                {/* Upscaled image */}
-                <div className="absolute" style={{pointerEvents: "none"}}>
-                    <Image
-                        src={upscaledSrc}
-                        // onClick={handleImageClick}
-                        alt="Upscaled Image"
-                        width={500}
-                        height={500}
-                        style={{
-                            overflow: "hidden",
-                            // clipPath: `inset(0 0 0 ${sliderPosition}px)`
-                        }}
-                    />
+                        {/* Upscaled image */}
+                        <div className='absolute shadow-customShadow' style={{pointerEvents: 'none'}}> {/* this line may need an "absolute" with "relative" in the parent div, once the two images are aligned over each other */}
+                            <Image
+                                src={upscaledSrc}
+                                // onClick={handleImageClick}
+                                alt='Upscaled Image'
+                                width={600}
+                                height={600}
+                                style={{
+                                    overflow: 'hidden',
+                                    // clipPath: `inset(0 0 0 ${sliderPosition}px)`
+                                }}
+                            />
+                        </div>
+
+                        {/* Original image */}
+                        <div >
+                            <Image
+                                src={originalSrc}
+                                // onClick={handleImageClick}
+                                alt="Original Image"
+                                width={600}
+                                height={600}
+                            />
+                        </div>
+
+                        {/* Download upscaled image */}
+                        <DownloadButton upscaledSrc={upscaledSrc} originalFileName={originalFileName} />
+
+                        {/* Upscale a new image */}
+                        <NewImageButton clearImage={setUpscaledSrc} />
+                    {/* </div> */}
+
                 </div>
-                </>
-
             )}
         </div>
     );

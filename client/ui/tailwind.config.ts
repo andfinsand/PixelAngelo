@@ -12,6 +12,9 @@ const config: Config = {
       customSpacing: '.35em',
     },
     extend: {
+      boxShadow: {
+        'customShadow': 'rgba(0, 0, 0, 0.2) 0px 10px 20px, rgba(0, 0, 0, 0.15) 0px 3px 6px',
+      },
       colors: {
         bgColorFrom: "#2E2E2E",
         bgColorTo: "#292929",
