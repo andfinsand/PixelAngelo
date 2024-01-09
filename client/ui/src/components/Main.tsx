@@ -7,6 +7,12 @@ const Main: React.FC = () => {
     const [upscaledSrc, setUpscaledSrc] = useState<string>("");
     const [originalSrc, setOriginalSrc] = useState<string>("");
     const [originalFileName, setOriginalFileName] = useState<string>("");
+
+    const [originalWidth, setOriginalWidth] = useState<number>(0);
+    const [originalHeight, setOriginalHeight] = useState<number>(0);
+    const [upscaledWidth, setUpscaledWidth] = useState<number>(0);
+    const [upscaledHeight, setUpscaledHeight] = useState<number>(0);
+
     const [dragIsActive, setDragIsActive] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState(false);
     const [resolutionError, setResolutionError] = useState<string>("");
@@ -56,15 +62,26 @@ const Main: React.FC = () => {
                     return response.json();
                 })
 
-                // Set fetched upscaled image, original source, and file name
+                // Set fetched upscaled image, original source, file name, and resolutions
                 .then(data => {
 
+                    // Images
                     const upscaledSrc = data["upscaled_path"];
                     setUpscaledSrc(upscaledSrc);
                     const getOriginalSrc = data["original_path"]
                     setOriginalSrc(getOriginalSrc)
                     const originalFileName = data["unique_name"]
                     setOriginalFileName(originalFileName)
+
+                    // Resolutions
+                    const originalWidth = data["original_width"]
+                    setOriginalWidth(originalWidth)
+                    const originalHeight = data["original_height"]
+                    setOriginalHeight(originalHeight)
+                    const upscaledWidth = data["upscaled_width"]
+                    setUpscaledWidth(upscaledWidth)
+                    const upscaledHeight = data["upscaled_height"]
+                    setUpscaledHeight(upscaledHeight)
 
                     // Introduce a delay before setting loader to false to prevent screen flash
                     setTimeout(() => {
@@ -185,7 +202,16 @@ const Main: React.FC = () => {
             )}
 
             {/* Image outputs */}
-            <ImageComparison upscaledSrc={upscaledSrc} setUpscaledSrc={setUpscaledSrc} originalFileName={originalFileName} originalSrc={originalSrc} />
+            <ImageComparison
+                upscaledSrc={upscaledSrc}
+                setUpscaledSrc={setUpscaledSrc}
+                originalFileName={originalFileName}
+                originalSrc={originalSrc}
+                originalWidth={originalWidth}
+                originalHeight={originalHeight}
+                upscaledWidth={upscaledWidth}
+                upscaledHeight={upscaledHeight}
+            />
 
         </>
     );

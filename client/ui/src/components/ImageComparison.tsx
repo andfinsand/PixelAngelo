@@ -7,9 +7,13 @@ type ImageComparisonProps = {
     setUpscaledSrc: React.Dispatch<React.SetStateAction<string>>;
     originalFileName: string;
     originalSrc: string;
+    originalWidth: number;
+    originalHeight: number;
+    upscaledWidth: number;
+    upscaledHeight: number;
 }
 
-const ImageComparison: React.FC<ImageComparisonProps> = ({upscaledSrc, setUpscaledSrc, originalFileName, originalSrc}) => {
+const ImageComparison: React.FC<ImageComparisonProps> = ({upscaledSrc, setUpscaledSrc, originalFileName, originalSrc, originalWidth, originalHeight, upscaledWidth, upscaledHeight }) => {
 
     return (
         <div className='flex flex-col justify-center items-center'>
@@ -18,8 +22,8 @@ const ImageComparison: React.FC<ImageComparisonProps> = ({upscaledSrc, setUpscal
 
                         {/* Upscaled and original resolution sizes */}
                         <div className='flex justify-between text-sm text-white mb-3'>
-                            <div className='bg-fileTypeContainer rounded px-2.5 py-0.5'>510 x 339 px</div>
-                            <div className='bg-fileTypeContainer rounded px-2.5 py-0.5'>1020 x 678 px</div>
+                            <div className='bg-fileTypeContainer rounded px-2.5 py-0.5'>{originalWidth} x {originalHeight} px</div>
+                            <div className='bg-fileTypeContainer rounded px-2.5 py-0.5'>{upscaledWidth} x {upscaledHeight} px</div>
                         </div>
 
                         {/* Image comparison */}
