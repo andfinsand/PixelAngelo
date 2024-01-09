@@ -14,22 +14,28 @@ const ImageComparison: React.FC<ImageComparisonProps> = ({upscaledSrc, setUpscal
     return (
         <div className='flex flex-col justify-center items-center'>
             { upscaledSrc && (
-                <div className='relative mt-5'>
+                <div className='relative mt-5 w-[700px]'>
 
-                    {/* Image comparison */}
-                    <ReactCompareSlider
-                        itemOne={<ReactCompareSliderImage className="slider-img" src={originalSrc} alt="Original Image" />}
-                        itemTwo={<ReactCompareSliderImage className="slider-img" src={upscaledSrc} alt='Upscaled Image' />}
-                        className='shadow-customShadow'
-                    />
+                        {/* Upscaled and original resolution sizes */}
+                        <div className='flex justify-between text-sm text-white mb-3'>
+                            <div className='bg-fileTypeContainer rounded px-2.5 py-0.5'>510 x 339 px</div>
+                            <div className='bg-fileTypeContainer rounded px-2.5 py-0.5'>1020 x 678 px</div>
+                        </div>
 
-                    {/* Download upscaled image */}
-                    <DownloadButton upscaledSrc={upscaledSrc} originalFileName={originalFileName} />
+                        {/* Image comparison */}
+                        <ReactCompareSlider
+                            itemOne={<ReactCompareSliderImage className='slider-img' src={originalSrc} alt='Original Image' />}
+                            itemTwo={<ReactCompareSliderImage className='slider-img' src={upscaledSrc} alt='Upscaled Image' />}
+                            className='shadow-customShadow'
+                        />
 
-                    {/* Upscale a new image */}
-                    <NewImageButton clearImage={setUpscaledSrc} />
+                        {/* Download upscaled image */}
+                        <DownloadButton upscaledSrc={upscaledSrc} originalFileName={originalFileName} />
 
-                </div>
+                        {/* Upscale a new image */}
+                        <NewImageButton clearImage={setUpscaledSrc} />
+                    </div>
+
             )}
         </div>
     );

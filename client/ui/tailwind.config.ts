@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     letterSpacing: {
       wide: '.025em',
-      customSpacing: '.35em',
+      customSpacing: '.33em',
     },
     extend: {
       boxShadow: {
