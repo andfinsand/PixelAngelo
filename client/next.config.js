@@ -4,7 +4,15 @@ const nextConfig = {
 }
 
 module.exports = {
+  reactStrictMode: true,
   images: {
-    domains: ['127.0.0.1'], // Add the hostname used in the src prop
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '127.0.0.1',
+        port: '',
+        pathname: '/',
+      },
+    ],
   },
 };
