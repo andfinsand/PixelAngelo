@@ -32,12 +32,6 @@ const config: Config = {
         poppins: ['Poppins', 'sans-serif'],
         poppinsBold: ['PoppinsBold', 'sans-serif'],
       },
-      height: {
-        '400': '400px',
-      },
-      width: {
-        '600': '600px',
-      },
     },
   },
   plugins: [],

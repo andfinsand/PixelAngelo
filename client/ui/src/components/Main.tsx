@@ -4,9 +4,9 @@ import ImageComparison from "./ImageComparison";
 
 const Main: React.FC = () => {
     const [file, setFile] = useState<File | null>(null);
-    const [upscaledSrc, setUpscaledSrc] = useState<string>("");
-    const [originalSrc, setOriginalSrc] = useState<string>("");
-    const [originalFileName, setOriginalFileName] = useState<string>("");
+    const [upscaledSrc, setUpscaledSrc] = useState<string>('');
+    const [originalSrc, setOriginalSrc] = useState<string>('');
+    const [originalFileName, setOriginalFileName] = useState<string>('');
 
     const [originalWidth, setOriginalWidth] = useState<number>(0);
     const [originalHeight, setOriginalHeight] = useState<number>(0);
@@ -15,15 +15,15 @@ const Main: React.FC = () => {
 
     const [dragIsActive, setDragIsActive] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [resolutionError, setResolutionError] = useState<string>("");
+    const [resolutionError, setResolutionError] = useState<string>('');
     const [typeError, setTypeError] = useState<string>('');
 
     // Send image file to backend for upscaling
     function processImageFile(file: File) {
 
         // Reset error states
-        setTypeError("")
-        setResolutionError("")
+        setTypeError('')
+        setResolutionError('')
 
         // File type checkpoint for drag event
         if (!file.type.startsWith('image/')) {
@@ -142,7 +142,7 @@ const Main: React.FC = () => {
                 <form
                     className={`${
                         dragIsActive ? "bg-dropZoneColorFrom brightness-105" : "bg-gradient-to-br from-dropZoneColorFrom to-dropZoneColorTo"
-                    } 'flex flex-col justify-center self-center rounded-lg w-600 h-400 m-10 p-6 shadow-customShadow`}
+                    } 'flex flex-col justify-center self-center rounded-lg w-[600px] h-[400px] m-10 p-6 shadow-customShadow`}
 
                     // Drag and drop handlers
                     onDragEnter={handleDragEnter}
@@ -194,7 +194,6 @@ const Main: React.FC = () => {
 
                                     </>
                                 )}
-
                             </div>
                         </div>
                     </div>
