@@ -2,17 +2,24 @@ from flask import Flask, request
 from flask_cors import CORS
 from PIL import Image
 from dotenv import load_dotenv
+
 import os
+import requests
+import tempfile
+import time
 import uuid
 
+from bucket_storage import upload_to_bucket
 from upscaler import upscale_image
 
 app = Flask(__name__)
 CORS(app)
 
-# Temporary location for image files
+# Env variables
 load_dotenv()
 temp_storage = os.getenv('temp_storage')
+runpod_url = os.getenv('runpod_url')
+runpod_key = os.getenv('runpod_key')
 
 @app.route('/', methods=['POST'])
 def receive_image():
@@ -23,36 +30,53 @@ def receive_image():
     # Generate a unique file name
     unique_filename = str(uuid.uuid4()) + os.path.splitext(file.filename)[1]
 
-    # Delete existing images in temporary location
-    for filename in os.listdir(temp_storage):
-        file_path = os.path.join(temp_storage, filename)
-        if os.path.isfile(file_path):
-            os.remove(file_path)
+    # Save original image to temporary file
+    with tempfile.NamedTemporaryFile(delete=False) as temp:
+        file.save(temp)
+        temp_path = temp.name
 
-    # Store original image to temporary location
-    input_image_path = os.path.join(temp_storage, unique_filename)
+    # Upload original image to Backblaze bucket
+    original_image_backblaze_url = upload_to_bucket(temp_path, unique_filename)
 
-    # Save original image
-    file.save(input_image_path)
+    # Delete the temporary file
+    os.remove(temp_path)
 
-    # Create location for upscaled image
-    output_image_path = os.path.join(temp_storage, 'upscaled_' + unique_filename)
+    # Runpod API
+    url = f'{runpod_url}/run'
+    headers = {
+        'Authorization': f'Bearer {runpod_key}',
+        'Content-Type': 'application/json'
+    }
+    job = {
+        'input': {
+            'model': 'upscaler',
+            'image_url': original_image_backblaze_url,
+            'filename': unique_filename
+        }
+    }
 
-    # Upscaler
-    upscale_image(input_image_path, output_image_path)
+    response = requests.post(url, headers=headers, json=job)
 
-    # Get width and height of original and upscaled image for display
-    original_resolution = Image.open(input_image_path)
+    # Get job id and check status
+    job_id = response.json()['id']
+    status = 'IN_QUEUE'
+    while status == 'IN_QUEUE' or status == 'IN_PROGRESS' or status == 'CANCELLED':
+        # Job success
+        if status == 'COMPLETED':
+            break
+        time.sleep(5)
+        job_response = requests.get(f'{runpod_url}/status/{job_id}', headers=headers)
+        status = job_response.json()['status']
+
+    # Get width and height of original image
+    original_resolution = Image.open(file)
     original_width, original_height = original_resolution.size
-    upscaled_resolution = Image.open(output_image_path)
-    upscaled_width, upscaled_height = upscaled_resolution.size
 
-    # Return upscaled image
-    filename_prefix = "static/images/"
-    upscaled_path = filename_prefix + 'upscaled_' + unique_filename
-    original_path = filename_prefix + unique_filename
+    # Calculate width and height of upscaled image by 2x
+    upscaled_width = original_width * 2
+    upscaled_height = original_height * 2
 
-    return {"upscaled_path": f"http://127.0.0.1:5000/{upscaled_path}", "original_path": f"http://127.0.0.1:5000/{original_path}", "unique_name": unique_filename, "original_width": original_width, "original_height": original_height, "upscaled_width": upscaled_width, "upscaled_height": upscaled_height}
+    return {'upscaled_path': f'https://f005.backblazeb2.com/file/pixelangelo-upscaler/upscaled_{unique_filename}', 'original_path': original_image_backblaze_url, 'unique_name': unique_filename, 'original_width': original_width, 'original_height': original_height, 'upscaled_width': upscaled_width, 'upscaled_height': upscaled_height}
 
 
 if __name__ == '__main__':

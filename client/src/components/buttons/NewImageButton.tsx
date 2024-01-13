@@ -8,7 +8,7 @@ const NewImageButton: React.FC<NewImageButtonProps> = ({clearImage}) => {
         <>
 
             {/* Upscale a new image button */}
-            <div className="flex justify-center mt-7">
+            <div className="flex justify-center my-7">
                 <button className='flex' type="button" onClick={() => clearImage("")}> {/* clear state of upscaledSrc to trigger component change back to dropzone */}
                     <img src='/new.svg' alt="Go back icon" />
                     <div className='text-grayFont pl-2 hover:text-white duration-200'>New image</div>
