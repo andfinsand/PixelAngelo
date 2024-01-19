@@ -1,7 +1,10 @@
 from PIL import Image
 from RealESRGAN import RealESRGAN
 import b2sdk.v2 as b2
+import io
 import os
+import requests
+import runpod
 import tempfile
 import torch
 
@@ -28,8 +31,10 @@ def upscale_image(path_to_original, scale_factor=2):
     # Get the model from the dictionary
     model = models[scale_factor]
 
-    # Convert to RGB
-    image = Image.open(path_to_original).convert('RGB')
+    # Get the image data from the bucket and covert to RGB
+    get_original = requests.get(path_to_original)
+    image_data = get_original.content
+    image = Image.open(io.BytesIO(image_data)).convert('RGB')
 
     # Use model
     upscaled_image = model.predict(image)
@@ -66,3 +71,14 @@ def handler(job):
 
     # Delete the temporary file
     os.remove(temp_path)
+
+if __name__ == "__main__":
+
+    # Start the serverless function with the handler and necessary input
+    runpod.serverless.start({
+        "handler": handler,
+        "input": {
+            "image_url": None,
+            "filename": None
+        }
+    })

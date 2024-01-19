@@ -10,7 +10,6 @@ import time
 import uuid
 
 from bucket_storage import upload_to_bucket
-from upscaler import upscale_image
 
 app = Flask(__name__)
 CORS(app)
