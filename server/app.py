@@ -16,7 +16,6 @@ CORS(app)
 
 # Env variables
 load_dotenv()
-temp_storage = os.getenv('temp_storage')
 runpod_url = os.getenv('runpod_url')
 runpod_key = os.getenv('runpod_key')
 
@@ -75,7 +74,15 @@ def receive_image():
     upscaled_width = original_width * 2
     upscaled_height = original_height * 2
 
-    return {'upscaled_path': f'https://f005.backblazeb2.com/file/pixelangelo-upscaler/upscaled_{unique_filename}', 'original_path': original_image_backblaze_url, 'unique_name': unique_filename, 'original_width': original_width, 'original_height': original_height, 'upscaled_width': upscaled_width, 'upscaled_height': upscaled_height}
+    return {
+        'upscaled_path': f'https://f005.backblazeb2.com/file/pixelangelo-upscaler/upscaled_{unique_filename}',
+        'original_path': original_image_backblaze_url,
+        'unique_name': unique_filename,
+        'original_width': original_width,
+        'original_height': original_height,
+        'upscaled_width': upscaled_width,
+        'upscaled_height': upscaled_height
+    }
 
 
 if __name__ == '__main__':

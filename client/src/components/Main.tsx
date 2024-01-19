@@ -42,9 +42,9 @@ const Main: React.FC = () => {
         image.onload = function() {
 
             // Maximum resolution checkpoint - keep within function to avoid async issues
-            if (image.width > 1000 || image.height > 1000) {
+            if (image.width > 1500 || image.height > 1500) {
                 setIsLoading(false);
-                setResolutionError('Image resolution exceeds the maximum allowed size of 1000 x 1000px');
+                setResolutionError('Image resolution exceeds the maximum allowed size of 1500 x 1500px');
             } else {
 
                 // Server API
@@ -189,7 +189,7 @@ const Main: React.FC = () => {
                                             <div className='bg-fileTypeContainer rounded-md py-1 px-2'>jpeg</div>
                                             <div className='bg-fileTypeContainer rounded-md py-1 px-2'>webp</div>
                                             <div className='bg-fileTypeContainer rounded-md py-1 px-2'>svg</div>
-                                            <div className='self-center'>up to 1000 x 1000px</div>
+                                            <div className='self-center'>up to 1500 x 1500px</div>
                                         </div>
 
                                     </>
