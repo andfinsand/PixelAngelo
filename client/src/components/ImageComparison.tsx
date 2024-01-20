@@ -18,10 +18,10 @@ const ImageComparison: React.FC<ImageComparisonProps> = ({upscaledSrc, setUpscal
     return (
         <div className='flex flex-col justify-center items-center'>
             { upscaledSrc && (
-                <div className='relative mt-5 w-[700px]'>
+                <div className='relative mt-5 w-[300px] sm:w-[500px] md:w-[700px]'>
 
                         {/* Upscaled and original resolution sizes */}
-                        <div className='flex justify-between text-sm text-white mb-3'>
+                        <div className='flex justify-between text-xs text-white mb-3 md:text-sm'>
                             <div className='bg-fileTypeContainer rounded px-2.5 py-0.5'>{originalWidth} x {originalHeight} px</div>
                             <div className='bg-fileTypeContainer rounded px-2.5 py-0.5'>{upscaledWidth} x {upscaledHeight} px</div>
                         </div>

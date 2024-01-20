@@ -11,6 +11,10 @@ const config: Config = {
       wide: '.025em',
       customSpacing: '.33em',
     },
+    screens: {
+      'sm': '520px',
+      'md': '720px',
+    },
     extend: {
       boxShadow: {
         'customShadow': 'rgba(0, 0, 0, 0.2) 0px 10px 20px, rgba(0, 0, 0, 0.15) 0px 3px 6px',
@@ -24,7 +28,7 @@ const config: Config = {
         dropZoneColorTo: "#404040",
         fileTypeContainer: "#5B5B5B",
         footerColor: "#8B8B8B",
-        grayFont: "#B8B8B8",
+        grayFont: "#C3C3C3",
         logoPink: "#db36a4",
         logoYellow: "#FFD303",
       },

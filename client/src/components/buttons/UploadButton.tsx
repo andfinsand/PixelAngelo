@@ -32,9 +32,9 @@ const UploadButton: React.FC<{ setFile: React.Dispatch<React.SetStateAction<File
             />
 
             {/* Choose image button */}
-            <button className='btn-hover-effect flex self-center drop-shadow-md rounded-lg px-7 py-4 hover:drop-shadow-none' type="button" onClick={openFileExplorer}>
-                <img src='/upload.svg' alt="Image upload icon" />
-                <div className='self-center text-sm pl-1'>Select Image</div>
+            <button className='btn-hover-effect flex self-center drop-shadow-md rounded-md px-5 py-3 hover:drop-shadow-none sm:rounded-lg sm:px-7 sm:py-4' type="button" onClick={openFileExplorer}>
+                <img src='/upload.svg' alt='Image upload icon' className='w-5 sm:w-6' />
+                <div className='self-center text-xs pl-1 sm:text-sm'>Select Image</div>
             </button>
 
         </>

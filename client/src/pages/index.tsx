@@ -19,19 +19,19 @@ export default function Home() {
           content='pixelangelo, image upscaling, upscale resolution, super resolution, image sharpness, photo enhancement, 2x upscaler, realesrgan, ai, nextjs, flask, python, tailwind, docker, runpod, backblaze, cloud storage, cloud gpu'
         />
         <meta
-          name="author"
-          content="Andrew Finsand"
+          name='author'
+          content='Andrew Finsand'
         />
         <meta
-          name="viewport"
-          content="width=device-width"
+          name='viewport'
+          content='width=device-width'
         />
       </Head>
 
       <main className='flex min-h-screen flex-col items-center justify-between bg-gradient-to-br from-bgColorFrom to-bgColorTo text-white font-poppins'>
 
         {/* Header */}
-        <div className='flex flex-col items-center w-screen'>
+        <div className='flex flex-col items-center w-full'>
           <Header />
           <Divider />
         </div>
@@ -42,7 +42,7 @@ export default function Home() {
         </div>
 
         {/* Footer */}
-        <div className='flex flex-col items-center w-screen'>
+        <div className='flex flex-col items-center w-full'>
           <Divider />
           <Footer />
         </div>
