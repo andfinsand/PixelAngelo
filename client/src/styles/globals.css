@@ -28,6 +28,16 @@ body {
   background-position: right center; /* change the direction of the change here */
 }
 
+/* SVG hover effect */
+.svg {
+  filter: brightness(1);
+  transition: filter 200ms;
+}
+
+.svg:hover {
+  filter: brightness(2) ;
+}
+
 /* Loader */
 .loader {
   width: 48px;

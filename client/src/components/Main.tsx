@@ -163,7 +163,7 @@ const Main: React.FC = () => {
                                     <>
                                         <div className='flex self-center loader'></div>
                                         <div className='text-center text-sm text-grayFont mt-12 mb-2'>Upscaling...</div>
-                                        {/* <div className='text-center text-xs text-grayFont'>Larger images may take up to 30 seconds to complete</div> */}
+                                        <div className='text-center text-[10px] text-grayFont mx-7 sm:text-xs'>Larger images may take up to a minute to complete</div>
                                     </>
                                 ) : (
                                     <>
