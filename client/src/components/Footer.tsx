@@ -13,6 +13,8 @@ const Footer: React.FC = () => {
                         Andrew Finsand
                     </a>
                 </p>
+
+                {/* Github icon */}
                 <a
                     href='https://github.com/andfinsand/PixelAngelo'
                     className='self-center'>
@@ -22,6 +24,7 @@ const Footer: React.FC = () => {
                         className='svg w-5 sm:w-6'
                     />
                 </a>
+
             </div>
         </>
     );

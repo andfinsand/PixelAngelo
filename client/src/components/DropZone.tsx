@@ -2,7 +2,7 @@ import { useState } from "react";
 import UploadButton from "./buttons/UploadButton"
 import ImageComparison from "./ImageComparison";
 
-const Main: React.FC = () => {
+const DropZone: React.FC = () => {
     const [file, setFile] = useState<File | null>(null);
     const [upscaledSrc, setUpscaledSrc] = useState<string>('');
     const [originalSrc, setOriginalSrc] = useState<string>('');
@@ -142,7 +142,7 @@ const Main: React.FC = () => {
                 <form
                     className={`${
                         dragIsActive ? "bg-dropZoneColorFrom brightness-105" : "bg-gradient-to-br from-dropZoneColorFrom to-dropZoneColorTo"
-                    } 'flex flex-col justify-center self-center rounded-lg shadow-customShadow w-[290px] h-[350px] m-0 p-4 sm:w-[440px] sm:h-[400px] sm:m-10 sm:p-6 md:w-[600px]`}
+                    } 'flex flex-col justify-center self-center rounded-lg shadow-customShadow w-[290px] h-[350px] m-0 p-4 sm:w-[440px] sm:h-[435px] sm:m-10 sm:p-6 md:w-[650px]`}
 
                     // Drag and drop handlers
                     onDragEnter={handleDragEnter}
@@ -220,4 +220,4 @@ const Main: React.FC = () => {
     );
 }
 
-export default Main;
+export default DropZone;

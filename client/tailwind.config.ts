@@ -33,7 +33,9 @@ const config: Config = {
         logoYellow: "#FFD303",
       },
       fontFamily: {
+        poppinsLight: ['PoppinsLight', 'sans-serif'],
         poppins: ['Poppins', 'sans-serif'],
+        poppinsSemiBold: ['PoppinsSemiBold', 'sans-serif'],
         poppinsBold: ['PoppinsBold', 'sans-serif'],
       },
     },

@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import Header from '../components/Header'
-import Main from '../components/Main'
+import DropZone from '../components/DropZone'
 import Footer from '../components/Footer'
 import Divider from '../components/Divider'
+import PrivacyPolicy from '../components/PrivacyPolicy';
 
 export default function Home() {
   return (
@@ -36,14 +37,20 @@ export default function Home() {
           <Divider />
         </div>
 
-        {/* Main content */}
+        {/* Drop zone area */}
         <div className='flex flex-col'>
-          <Main />
+          <DropZone />
+        </div>
+
+        {/* Privacy policy */}
+        <div className='flex flex-col items-center w-full'>
+          <Divider />
+          <PrivacyPolicy />
+          <Divider />
         </div>
 
         {/* Footer */}
         <div className='flex flex-col items-center w-full'>
-          <Divider />
           <Footer />
         </div>
 
