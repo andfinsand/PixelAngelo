@@ -4,7 +4,6 @@ type PrivacyPolicyButtonProps = {
 }
 
 const PrivacyPolicyButton: React.FC<PrivacyPolicyButtonProps> = ({displayContent, setDisplayContent}) => {
-
     return (
         <>
             {/* Privacy policy button */}

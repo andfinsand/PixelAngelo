@@ -4,6 +4,8 @@ const Footer: React.FC = () => {
             <div className='flex flex-col self-center text-center gap-2 pb-5 sm:pb-9'>
                 <p className='text-[10px] font-light text-footerColor sm:text-xs'>Designed with Figma, built with Next.js and Flask</p>
                 <p className='text-[10px] font-light text-footerColor sm:text-xs'> by&nbsp;
+
+                    {/* Portfolio link */}
                     <a
                         href='https://www.andrewfinsand.dev/'
                         target='_blank'
@@ -24,7 +26,6 @@ const Footer: React.FC = () => {
                         className='svg w-5 sm:w-6'
                     />
                 </a>
-
             </div>
         </>
     );

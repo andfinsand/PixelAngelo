@@ -48,7 +48,20 @@ body {
   filter: brightness(2) ;
 }
 
-/* Caret */
+/* Custom slider styling */
+.shrink-slider .__rcs-handle-button {
+  width: 42px !important;
+  height: 42px !important;
+  gap: 6px !important;
+}
+
+.shrink-slider .__rcs-handle-arrow {
+  border-top: 6px solid transparent !important;
+  border-right: 7.5px solid !important;
+  border-bottom: 6px solid transparent !important;
+}
+
+/* Privacty policy caret */
 .caret {
   display: inline-block;
   width: 0;
