@@ -28,8 +28,8 @@ const ImageComparison: React.FC<ImageComparisonProps> = ({upscaledSrc, setUpscal
 
                         {/* Image comparison */}
                         <ReactCompareSlider
-                            itemOne={<ReactCompareSliderImage className='slider-img' src={originalSrc} alt='Original Image' />}
-                            itemTwo={<ReactCompareSliderImage className='slider-img' src={upscaledSrc} alt='Upscaled Image' />}
+                            itemOne={<ReactCompareSliderImage src={originalSrc} alt='Original Image' />}
+                            itemTwo={<ReactCompareSliderImage src={upscaledSrc} alt='Upscaled Image' />}
                             className='shadow-customShadow'
                         />
 

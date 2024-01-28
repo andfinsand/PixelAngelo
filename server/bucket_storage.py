@@ -1,5 +1,4 @@
 from dotenv import load_dotenv
-
 import b2sdk.v2 as b2
 import os
 
@@ -14,9 +13,9 @@ def upload_to_bucket(temp_path, unique_filename):
     info = b2.InMemoryAccountInfo()
     b2_api = b2.B2Api(info)
     b2_api.authorize_account("production", b2_api_key_id, b2_api_key_application)
+    bucket = b2_api.get_bucket_by_name('pixelangelo-upscaler')
 
     # Upload file
-    bucket = b2_api.get_bucket_by_name('pixelangelo-upscaler')
     file_info = bucket.upload_local_file(local_file=temp_path, file_name=unique_filename)
 
     # Backblaze image url
