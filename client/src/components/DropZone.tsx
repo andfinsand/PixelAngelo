@@ -17,6 +17,36 @@ const DropZone: React.FC = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [resolutionError, setResolutionError] = useState<string>('');
     const [typeError, setTypeError] = useState<string>('');
+    const [limitError, setLimitError] = useState<string>('');
+
+    // Rate limiter - 10 submissions every 24 hours
+    const rateLimit = () => {
+
+        // Retrieve upload data from local storage or initialize as an empty object
+        const uploadData = JSON.parse(localStorage.getItem('uploadData') || '{}');
+        const now = new Date();
+
+        // Check for existing upload count or first upload time
+        if (!uploadData.count || !uploadData.firstUpload) {
+            localStorage.setItem('uploadData', JSON.stringify({ count: 1, firstUpload: now }));
+            return true;
+        }
+
+        // Convert the first upload time from the stored data to a Date object
+        const firstUpload = new Date(uploadData.firstUpload);
+        const hoursPassed = (now.getTime() - firstUpload.getTime()) / 36e5; // Convert milliseconds to hours
+
+        // Check if 24 hours have passed since first upload
+        if (hoursPassed >= 24) {
+            localStorage.setItem('uploadData', JSON.stringify({ count: 1, firstUpload: now }));
+            return true;
+        } else if (uploadData.count < 10) {
+            localStorage.setItem('uploadData', JSON.stringify({ ...uploadData, count: uploadData.count + 1 }));
+            return true;
+        }
+
+        return false;
+    };
 
     // Send image file to backend for upscaling
     function processImageFile(file: File) {
@@ -24,6 +54,14 @@ const DropZone: React.FC = () => {
         // Reset error states
         setTypeError('')
         setResolutionError('')
+        setLimitError('')
+
+        // Check rate limit
+        if (!rateLimit()) {
+            setLimitError('Upload limit reached. You can upload up to 10 images per day.');
+            setIsLoading(false);
+            return;
+        }
 
         // File type checkpoint for drag event
         if (!file.type.startsWith('image/')) {
@@ -170,12 +208,17 @@ const DropZone: React.FC = () => {
 
                                         {/* File type error message */}
                                         {typeError &&
-                                            <p className='absolute bottom-14 left-[199px] text-yellow-500 text-xs'>{typeError}</p>
+                                            <p className='absolute bottom-9 left-[65px] right-[65px] text-center text-yellow-500 text-[10px] sm:text-xs sm:bottom-14 md:left-[199px] md:right-[199px]'>{typeError}</p>
                                         }
 
                                         {/* Resolution error message */}
                                         {resolutionError &&
-                                            <p className='absolute bottom-14 left-[69px] text-yellow-500 text-xs'>{resolutionError}</p>
+                                            <p className='absolute bottom-8 left-[27px] right-[27px] text-center text-yellow-500 text-[10px] sm:text-xs sm:bottom-14 md:left-[69px] md:right-[69px]'>{resolutionError}</p>
+                                        }
+
+                                        {/* Rate limit error message */}
+                                        {limitError &&
+                                            <p className='absolute bottom-8 left-[36px] right-[36px] text-center text-yellow-500 text-[10px] sm:text-xs sm:bottom-14 md:left-[113px] md:right-[113px]'>{limitError}</p>
                                         }
 
                                         {/* Upload button */}
