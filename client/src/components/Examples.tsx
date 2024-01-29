@@ -11,7 +11,7 @@ const Examples: React.FC = () => {
                 <h1 className='font-poppinsSemiBold text-sm mt-7 sm:text-lg'>How it works:
                     <span className='decorator'></span>
                 </h1>
-                <div className='font-poppinsLight text-xs mt-5 sm:text-sm sm:leading-relaxed'>PixelAngelo uses AI to double image resolution while also enhancing quality. Select an image, wait for it to upscale, and download the newly upscaled image. Compare image resolution and quality using the slider. Limit 10 submissions per user per day.</div>
+                <div className='font-poppinsLight text-xs mt-5 sm:text-sm sm:leading-relaxed'>PixelAngelo uses AI to double image resolution while also enhancing quality. Select an image, wait for it to upscale, and download the newly upscaled image. Compare image resolution and quality using the slider. Users can submit up to 10 images per day.</div>
 
                 {/* Examples content */}
                 <h1 className='font-poppinsBold text-sm mt-7 sm:text-lg sm:mt-10'>Don't have an image on hand?

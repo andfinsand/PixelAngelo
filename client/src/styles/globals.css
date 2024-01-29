@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+
 @font-face {
   font-family: 'PoppinsLight';
   src: url('./fonts/poppins-font/files/poppins-latin-200.woff');
@@ -22,10 +25,16 @@
   src: url('./fonts/poppins-font/files/poppins-latin-600.woff');
 }
 
+
+
+
 body {
   margin: 0;
   padding: 0;
 }
+
+
+
 
 /* Button hover - gradient effect */
 .btn-hover-effect {
@@ -35,8 +44,11 @@ body {
   }
 
 .btn-hover-effect:hover {
-  background-position: right center; /* change the direction of the change here */
+  background-position: right center;
 }
+
+
+
 
 /* SVG hover effect */
 .svg {
@@ -47,6 +59,9 @@ body {
 .svg:hover {
   filter: brightness(2) ;
 }
+
+
+
 
 /* Custom slider styling */
 .shrink-slider .__rcs-handle-button {
@@ -61,7 +76,10 @@ body {
   border-bottom: 6px solid transparent !important;
 }
 
-/* Privacty policy caret */
+
+
+
+/* Privacy policy caret */
 .caret {
   display: inline-block;
   width: 0;
@@ -86,6 +104,9 @@ body {
   transition: max-height 0.5s ease-in, opacity 0.5s ease-in;
 }
 
+
+
+
 /* Gradient underline decorator */
 .decorator::after {
   content: "";
@@ -95,6 +116,9 @@ body {
   background: linear-gradient(90deg, #FFCA0B 0%, #FE13A5 100%);
   margin-top: 6px;
 }
+
+
+
 
 /* Loader */
 .loader {
