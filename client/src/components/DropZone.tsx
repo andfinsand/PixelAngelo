@@ -45,7 +45,7 @@ const DropZone: React.FC = () => {
             return true;
         }
 
-        return false;
+        return true;
     };
 
     // Send image file to backend for upscaling
