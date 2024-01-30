@@ -18,7 +18,7 @@ const handleDownload = ({upscaledSrc, originalFileName}: DownloadButtonProps) =>
     });
 };
 
-const DownloadButton: React.FC<DownloadButtonProps> = ({upscaledSrc, originalFileName}) => {
+const DownloadButton = ({upscaledSrc, originalFileName}: DownloadButtonProps) => {
     return (
         <>
             {/* Downlaod image button */}
@@ -30,7 +30,7 @@ const DownloadButton: React.FC<DownloadButtonProps> = ({upscaledSrc, originalFil
                 >
                     <div className='flex rounded bg-dropZoneColorTo px-6 py-3'>
                         <img src='/download.svg' alt="Download icon" className='w-4 sm:w-5' />
-                        <div className='pl-2 text-sm font-poppinsSemiBold sm:text-base'>Download</div>
+                        <div className='pl-2 text-sm sm:text-base'>Download</div>
                     </div>
                 </button>
             </div>

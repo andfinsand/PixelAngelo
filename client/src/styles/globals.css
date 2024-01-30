@@ -108,12 +108,12 @@ body {
 
 
 /* Gradient underline decorator */
-.decorator::after {
+.decorator {
   content: "";
   display: block;
   height: 3px;
   width: 22px;
-  background: linear-gradient(90deg, #FFCA0B 0%, #FE13A5 100%);
+  background: linear-gradient(90deg, #FFD303 0%, #FE13A5 100%);
   margin-top: 6px;
 }
 

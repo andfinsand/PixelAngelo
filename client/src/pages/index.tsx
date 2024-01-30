@@ -2,13 +2,14 @@ import Head from 'next/head';
 import Header from '../components/Header'
 import DropZone from '../components/DropZone'
 import Examples from '../components/Examples'
+import PrivacyPolicy from '../components/PrivacyPolicy';
 import Footer from '../components/Footer'
 import Divider from '../components/Divider'
-import PrivacyPolicy from '../components/PrivacyPolicy';
 
 export default function Home() {
   return (
     <>
+
       {/* Metadata */}
       <Head>
         <title>PixelAngelo - Enhance images with 2x resolution</title>
@@ -30,7 +31,7 @@ export default function Home() {
         />
       </Head>
 
-      <main className='flex min-h-screen flex-col items-center justify-between bg-gradient-to-br from-bgColorFrom to-bgColorTo text-white font-poppins'>
+      <main className='flex flex-col min-h-screen items-center justify-between bg-gradient-to-br from-bgColorFrom to-bgColorTo text-white font-poppins'>
 
         {/* Header */}
         <div className='flex flex-col items-center w-full'>
