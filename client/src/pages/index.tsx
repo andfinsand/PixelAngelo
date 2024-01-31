@@ -9,6 +9,7 @@ import Divider from '../components/Divider'
 export default function Home() {
   return (
     <>
+
       {/* Metadata */}
       <Head>
         <title>PixelAngelo - Enhance images with 2x resolution</title>
@@ -61,6 +62,7 @@ export default function Home() {
           <Footer />
         </div>
       </main>
+
     </>
   )
 }
