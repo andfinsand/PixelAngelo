@@ -3,7 +3,7 @@ type PrivacyPolicyButtonProps = {
     setDisplayContent: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const PrivacyPolicyButton: React.FC<PrivacyPolicyButtonProps> = ({displayContent, setDisplayContent}) => {
+const PrivacyPolicyButton = ({displayContent, setDisplayContent}: PrivacyPolicyButtonProps) => {
     return (
         <>
             {/* Privacy policy button */}

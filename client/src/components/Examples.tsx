@@ -1,7 +1,6 @@
-import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
-import ExampleSlider from "./ExampleSlider";
+import ExampleSlider from './ExampleSlider';
 
-const Examples: React.FC = () => {
+const Examples = () => {
     return (
         <>
             <div className='w-[290px] my-0 sm:w-[440px] md:w-[650px] sm:my-10'>
@@ -40,6 +39,7 @@ const Examples: React.FC = () => {
                     </div>
                 </div>
 
+                {/* Image examples */}
                 {/* Second set */}
                 <div className='flex-col gap-6 mt-9 md:mt-12 md:flex md:flex-row'>
                     {/* Landscape */}

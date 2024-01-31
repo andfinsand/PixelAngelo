@@ -76,6 +76,33 @@ body {
   border-bottom: 6px solid transparent !important;
 }
 
+/* Main slider */
+#shrink-slider-main .__rcs-handle-button {
+  width: 56px !important;
+  height: 56px !important;
+  gap: 8px !important;
+}
+
+#shrink-slider-main .__rcs-handle-arrow {
+  border-top: 8px solid transparent !important;
+  border-right: 10px solid !important;
+  border-bottom: 8px solid transparent !important;
+}
+
+@media (max-width: 720px) {
+  #shrink-slider-main .__rcs-handle-button {
+      width: 42px !important;
+      height: 42px !important;
+      gap: 6px !important;
+  }
+
+  #shrink-slider-main .__rcs-handle-arrow {
+    border-top: 6px solid transparent !important;
+    border-right: 7.5px solid !important;
+    border-bottom: 6px solid transparent !important;
+  }
+}
+
 
 
 

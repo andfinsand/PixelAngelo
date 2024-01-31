@@ -1,8 +1,8 @@
-import { useState } from "react";
-import UploadButton from "./buttons/UploadButton"
-import ImageComparison from "./ImageComparison";
+import { useState } from 'react';
+import UploadButton from './buttons/UploadButton'
+import ImageComparison from './ImageComparison';
 
-const DropZone: React.FC = () => {
+const DropZone = () => {
     const [file, setFile] = useState<File | null>(null);
     const [upscaledSrc, setUpscaledSrc] = useState<string>('');
     const [originalSrc, setOriginalSrc] = useState<string>('');
@@ -14,7 +14,7 @@ const DropZone: React.FC = () => {
     const [upscaledHeight, setUpscaledHeight] = useState<number>(0);
 
     const [dragIsActive, setDragIsActive] = useState<boolean>(false);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [resolutionError, setResolutionError] = useState<string>('');
     const [typeError, setTypeError] = useState<string>('');
     const [limitError, setLimitError] = useState<string>('');
@@ -48,12 +48,12 @@ const DropZone: React.FC = () => {
         return false;
     };
 
-    // Send image file to backend for upscaling
+    // Send image file to server for upscaling
     function processImageFile(file: File) {
 
         // Reset error states
-        setTypeError('')
         setResolutionError('')
+        setTypeError('')
         setLimitError('')
 
         // Check rate limit
@@ -104,21 +104,21 @@ const DropZone: React.FC = () => {
                 .then(data => {
 
                     // Images
-                    const upscaledSrc = data["upscaled_path"];
+                    const upscaledSrc = data['upscaled_path'];
                     setUpscaledSrc(upscaledSrc);
-                    const getOriginalSrc = data["original_path"]
+                    const getOriginalSrc = data['original_path']
                     setOriginalSrc(getOriginalSrc)
-                    const originalFileName = data["unique_name"]
+                    const originalFileName = data['unique_name']
                     setOriginalFileName(originalFileName)
 
                     // Resolutions
-                    const originalWidth = data["original_width"]
+                    const originalWidth = data['original_width']
                     setOriginalWidth(originalWidth)
-                    const originalHeight = data["original_height"]
+                    const originalHeight = data['original_height']
                     setOriginalHeight(originalHeight)
-                    const upscaledWidth = data["upscaled_width"]
+                    const upscaledWidth = data['upscaled_width']
                     setUpscaledWidth(upscaledWidth)
-                    const upscaledHeight = data["upscaled_height"]
+                    const upscaledHeight = data['upscaled_height']
                     setUpscaledHeight(upscaledHeight)
 
                     // Introduce a delay before setting loader to false to prevent screen flash
@@ -199,21 +199,21 @@ const DropZone: React.FC = () => {
                                 {/* Trigger loader on upload */}
                                 {isLoading ? (
                                     <>
-                                        <div className='flex self-center loader'></div>
+                                        <div className='loader flex self-center'></div>
                                         <div className='text-center text-sm text-grayFont mt-12 mb-2'>Upscaling...</div>
                                         <div className='text-center text-[10px] text-grayFont mx-7 sm:text-xs'>Larger images may take up to a minute to complete</div>
                                     </>
                                 ) : (
                                     <>
 
-                                        {/* File type error message */}
-                                        {typeError &&
-                                            <p className='absolute bottom-9 left-[65px] right-[65px] text-center text-yellow-500 text-[10px] sm:text-xs sm:bottom-14 md:left-[199px] md:right-[199px]'>{typeError}</p>
-                                        }
-
                                         {/* Resolution error message */}
                                         {resolutionError &&
                                             <p className='absolute bottom-8 left-[27px] right-[27px] text-center text-yellow-500 text-[10px] sm:text-xs sm:bottom-14 md:left-[69px] md:right-[69px]'>{resolutionError}</p>
+                                        }
+
+                                        {/* File type error message */}
+                                        {typeError &&
+                                            <p className='absolute bottom-9 left-[65px] right-[65px] text-center text-yellow-500 text-[10px] sm:text-xs sm:bottom-14 md:left-[199px] md:right-[199px]'>{typeError}</p>
                                         }
 
                                         {/* Rate limit error message */}
@@ -224,7 +224,7 @@ const DropZone: React.FC = () => {
                                         {/* Upload button */}
                                         <UploadButton setFile={setFile} processImageFile={processImageFile} />
 
-                                        <div className='text-center text-grayFont text-[10px] mt-3 sm:mt-5 sm:text-xs'>or drop image here</div>
+                                        <div className='text-center text-grayFont text-[10px] mt-3 sm:text-xs sm:mt-5'>or drop image here</div>
 
                                         {/* File parameters */}
                                         <div className='flex flex-col text-grayFont text-[10px] mt-8 sm:flex-row sm:text-xs'>
@@ -238,7 +238,6 @@ const DropZone: React.FC = () => {
                                                 <div>up to 1500 x 1500px</div>
                                             </div>
                                         </div>
-
                                     </>
                                 )}
                             </div>
@@ -258,7 +257,6 @@ const DropZone: React.FC = () => {
                 upscaledWidth={upscaledWidth}
                 upscaledHeight={upscaledHeight}
             />
-
         </>
     );
 }
