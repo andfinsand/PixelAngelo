@@ -19,7 +19,7 @@ RUN pip install gunicorn
 # Final Stage
 FROM nginx:alpine
 # Copy built Next.js files from client-build stage
-COPY --from=client-build /app/out /usr/share/nginx/html
+COPY --from=client-build /app/.next /usr/share/nginx/html
 # Set up nginx for client
 COPY deployment/nginx.conf /etc/nginx/conf.d/default.conf
 # Copy Flask server from server-build stage
