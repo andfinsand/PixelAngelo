@@ -16,7 +16,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile.flask
+      dockerfile: Dockerfile
     environment:
       - FLASK_ENV=production
     networks:
