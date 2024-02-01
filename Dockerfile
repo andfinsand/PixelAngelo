@@ -13,12 +13,12 @@ RUN pip install gunicorn
 
 COPY . .
 
-# Make port 5000 available
-EXPOSE 5000
+# Make $PORT available
+EXPOSE $PORT
 
 # Define environment variable
 ENV FLASK_APP=app.py
 ENV FLASK_RUN_HOST=0.0.0.0
 
 # Run app.py when the container launches
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "server.wsgi:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "server.wsgi:app"]
