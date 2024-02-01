@@ -13,9 +13,6 @@ RUN pip install gunicorn
 
 COPY . .
 
-# Make $PORT available
-EXPOSE $PORT
-
 # Define environment variable
 ENV FLASK_APP=app.py
 ENV FLASK_RUN_HOST=0.0.0.0
