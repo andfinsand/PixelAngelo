@@ -11,10 +11,11 @@ FROM python:3.8-slim as server-build
 WORKDIR /server
 COPY server/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-COPY server/ .
 
 # Install Gunicorn
 RUN pip install gunicorn
+
+COPY server/ .
 
 # Final Stage
 FROM nginx:alpine
@@ -27,4 +28,4 @@ COPY --from=server-build /server /server
 WORKDIR /server
 
 # Run Gunicorn for the Flask app
-CMD gunicorn --bind 0.0.0.0:5000 app:app
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
