@@ -31,7 +31,7 @@ const DownloadButton = ({upscaledSrc, originalFileName}: DownloadButtonProps) =>
                     onClick={() => handleDownload({ upscaledSrc, originalFileName })}
                 >
                     <div className='flex rounded bg-dropZoneColorTo px-5 py-3 sm:px-6'>
-                        <img
+                        <Image
                             src='/download.svg'
                             alt='Download icon'
                             width={20}

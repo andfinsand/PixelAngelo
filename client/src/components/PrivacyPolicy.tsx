@@ -27,7 +27,7 @@ const PrivacyPolicy = () => {
                             </ul>
                             <ul className='list-disc font-poppinsSemiBold text-sm mt-7 sm:text-lg'>Restricted Usage:
                                 <span className='decorator'></span>
-                                <li className='text-xs font-poppinsLight ml-10 mt-5 sm:text-sm sm:leading-relaxed'>Do not upload sensitive documents, images of illegal nature, or images violating other individuals' privacy using this service.</li>
+                                <li className='text-xs font-poppinsLight ml-10 mt-5 sm:text-sm sm:leading-relaxed'>Do not upload sensitive documents, images of illegal nature, or images violating other individuals&apos; privacy using this service.</li>
                             </ul>
                         </>
                     )}
