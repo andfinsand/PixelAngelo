@@ -10,3 +10,5 @@ pip-log.txt
 pip-delete-this-directory.txt
 .git
 Dockerfile
+server/upscaler.py
+server/Dockerfile

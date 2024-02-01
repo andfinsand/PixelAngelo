@@ -88,7 +88,7 @@ const DropZone = () => {
                 // Server API
                 const formData = new FormData();
                 formData.append('file', file);
-                return fetch('http://localhost:5000/', {
+                return fetch('/api/', {
                     method: 'POST',
                     body: formData
                 })
