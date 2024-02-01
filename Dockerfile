@@ -8,6 +8,11 @@ COPY ./server /app
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Install Gunicorn
+RUN pip install gunicorn
+
+COPY . .
+
 # Make port 5000 available
 EXPOSE 5000
 
