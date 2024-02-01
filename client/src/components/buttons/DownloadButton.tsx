@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 type DownloadButtonProps = {
     upscaledSrc: string;
     originalFileName: string;
@@ -32,6 +34,8 @@ const DownloadButton = ({upscaledSrc, originalFileName}: DownloadButtonProps) =>
                         <img
                             src='/download.svg'
                             alt='Download icon'
+                            width={20}
+                            height={20}
                             className='w-4 sm:w-5'
                         />
                         <div className='pl-2 text-sm sm:text-base'>Download</div>

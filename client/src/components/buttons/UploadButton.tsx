@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import Image from 'next/image';
 
 type UploadButtonProps = {
     setFile: React.Dispatch<React.SetStateAction<File | null>>;
@@ -40,9 +41,11 @@ const UploadButton = ({ setFile, processImageFile }: UploadButtonProps) => {
                 className='btn-hover-effect flex self-center drop-shadow-md rounded-md px-5 py-3 hover:drop-shadow-none sm:rounded-lg sm:px-7 sm:py-4'
                 type='button'
                 onClick={openFileExplorer}>
-                <img
+                <Image
                     src='/upload.svg'
                     alt='Image upload icon'
+                    width={24}
+                    height={24}
                     className='w-5 sm:w-6'
                 />
                 <div className='self-center text-xs pl-1 sm:text-sm'>Select Image</div>

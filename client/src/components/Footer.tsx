@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const Footer = () => {
     return (
         <>
@@ -9,7 +11,7 @@ const Footer = () => {
                     <a
                         href='https://www.andrewfinsand.dev/'
                         target='_blank'
-                        aria-label="open link to Andrew Finsand's portfolio"
+                        aria-label="open link to Andrew Finsands portfolio"
                         className='hover:text-white duration-200 whitespace-nowrap'
                     >
                         Andrew Finsand
@@ -20,9 +22,11 @@ const Footer = () => {
                 <a
                     href='https://github.com/andfinsand/PixelAngelo'
                     className='self-center'>
-                    <img
+                    <Image
                         src='/github.svg'
                         alt='Github icon'
+                        width={98}
+                        height={96}
                         className='svg w-5 sm:w-6'
                     />
                 </a>
