@@ -83,3 +83,6 @@ def receive_image():
         'upscaled_width': upscaled_width,
         'upscaled_height': upscaled_height
     }
+
+if __name__ == '__main__':
+    app.run(debug=True)
