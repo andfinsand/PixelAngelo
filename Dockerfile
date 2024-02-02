@@ -1,18 +1,16 @@
 # Build frontend
 FROM node:18.17.0 AS builder
-
 WORKDIR /app
-
 COPY ./client/package.json ./client/package-lock.json ./
-
 RUN npm install
-
 COPY ./client/ .
-
 RUN npm run build
 
 # Build backend
 FROM python:3.9-slim-buster
+
+# Install npm
+RUN apt-get update && apt-get install -y npm
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -21,7 +19,7 @@ ENV PYTHONUNBUFFERED=1
 # Set working directory inside the container
 WORKDIR /backend
 
-# Copy the server directory to the container directory
+# Copy the frontend and backend code
 COPY --from=builder /app/public ./client
 COPY ./server /backend
 
