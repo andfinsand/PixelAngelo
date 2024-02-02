@@ -1,42 +1,24 @@
-# Build frontend
-FROM node:18-alpine AS frontend
-
-WORKDIR /app
-
-COPY ./client /app
-
-RUN npm install
-
-RUN npm run build
-
 # Build backend
-FROM python:3.8-slim AS backend
+FROM python:3.13.0-slim
 
+# Set working directory inside the container
 WORKDIR /backend
 
+# Establish port for Flask
+ENV PORT 5000
+
+# Copy the server directory to the container directory
 COPY ./server /backend
 
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Production image
-FROM nginx:stable-alpine
-
-# Copy artifacts
-COPY --from=frontend /app/build /usr/share/nginx/html
-
-COPY --from=backend /backend /backend
-
-WORKDIR /backend
-
 # Install dependencies
-RUN pip install gunicorn
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends nginx gunicorn \
+    && pip install --no-cache-dir -r requirements.txt \
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN pip install -r requirements.txt
-
-# Configure container
-ENV PORT=$PORT
-
+# Expose the port
 EXPOSE $PORT
 
 # Run app.py when the container launches
-CMD ["nginx", "-g", "daemon off;", "gunicorn", "--bind", "0.0.0.0:$PORT", "wsgi:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "wsgi:app"]
