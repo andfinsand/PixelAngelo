@@ -1,5 +1,5 @@
 # Build frontend
-FROM node:14.17.3 AS builder
+FROM node:18.17.0 AS builder
 
 WORKDIR /app
 
