@@ -19,7 +19,7 @@ RUN pip install -r requirements.txt
 RUN pip install gunicorn
 
 # Expose the port
-EXPOSE $PORT
+EXPOSE 5000
 
 # Run app with gunicorn using Python 3.9 explicitly
-CMD ["/usr/local/bin/gunicorn", "--bind", "0.0.0.0:$PORT", "wsgi:app"]
+CMD ["/usr/local/bin/gunicorn", "--bind", "0.0.0.0:${PORT}", "wsgi:app"]
