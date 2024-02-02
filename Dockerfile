@@ -11,9 +11,6 @@ COPY ./client/ .
 
 RUN npm run build
 
-# Check the contents of the build directory
-RUN ls /app/client/build
-
 # Build backend
 FROM python:3.9-slim-buster
 
@@ -25,7 +22,7 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /backend
 
 # Copy the server directory to the container directory
-COPY --from=builder /app/client/build ./client
+COPY --from=builder /app/public ./client
 COPY ./server /backend
 
 # Install pip dependencies
