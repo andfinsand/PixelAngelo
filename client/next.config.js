@@ -4,6 +4,7 @@ const nextConfig = {
 }
 
 module.exports = {
+  outputdir: './build',
   reactStrictMode: true,
   images: {
     remotePatterns: [
