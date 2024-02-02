@@ -18,7 +18,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Expose the port
-EXPOSE $PORT
+EXPOSE 5000
 
 # Run app.py when the container launches
-CMD ["gunicorn", "--bind", "0.0.0.0:${PORT}", "wsgi:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "wsgi:app"]
