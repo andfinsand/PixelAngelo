@@ -1,5 +1,5 @@
 # Build backend
-FROM python:3.13.0-slim
+FROM python:3.9-slim-buster
 
 # Set working directory inside the container
 WORKDIR /backend
