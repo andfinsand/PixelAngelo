@@ -14,3 +14,17 @@ server/upscaler.py
 server/Dockerfile
 server/models/
 server/venv/
+
+# Exclude development dependencies
+client/node_modules
+client/npm-debug.log
+
+# Exclude production dependencies
+client/package-lock.json
+
+# Exclude build artifacts
+client/build
+
+client/.next
+
+client/.env

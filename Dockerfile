@@ -1,21 +1,42 @@
-FROM python:3.8-slim
+# Build client
+FROM node:16-alpine AS client
 
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-COPY ./server /app
+COPY ./client /app
 
-# Install any needed packages specified in requirements.txt
+RUN npm install
+
+RUN npm run build
+
+# Build back end
+FROM python:3.8-slim AS backend
+
+WORKDIR /backend
+
+COPY ./server /backend
+
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Install Gunicorn
+# Production image
+FROM nginx:stable-alpine
+
+# Copy artifacts
+COPY --from=build /app/build /usr/share/nginx/html
+
+COPY --from=backend /backend /backend
+
+WORKDIR /backend
+
+# Install dependencies
 RUN pip install gunicorn
 
-COPY . .
+RUN pip install -r requirements.txt
 
-# Define environment variable
-ENV FLASK_APP=app.py
-ENV FLASK_RUN_HOST=0.0.0.0
+# Configure container
+ENV PORT=$PORT
+
+EXPOSE $PORT
 
 # Run app.py when the container launches
-CMD ["gunicorn", "server.wsgi:app"]
+CMD ["nginx", "-g", "daemon off;", "gunicorn", "--bind", "0.0.0.0:$PORT", "wsgi:app"]
