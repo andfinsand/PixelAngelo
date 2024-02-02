@@ -1,5 +1,5 @@
-# Build client
-FROM node:16-alpine AS client
+# Build frontend
+FROM node:16-alpine AS frontend
 
 WORKDIR /app
 
@@ -9,7 +9,7 @@ RUN npm install
 
 RUN npm run build
 
-# Build back end
+# Build backend
 FROM python:3.8-slim AS backend
 
 WORKDIR /backend
@@ -22,7 +22,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 FROM nginx:stable-alpine
 
 # Copy artifacts
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=frontend /app/build /usr/share/nginx/html
 
 COPY --from=backend /backend /backend
 
