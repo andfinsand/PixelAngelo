@@ -1,24 +1,25 @@
 # Build backend
 FROM python:3.9-slim-buster
 
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
 # Set working directory inside the container
 WORKDIR /backend
-
-# Establish port for Flask
-ENV PORT 5000
 
 # Copy the server directory to the container directory
 COPY ./server /backend
 
-# Install dependencies
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends nginx gunicorn \
-    && pip install --no-cache-dir -r requirements.txt \
-    && apt-get autoremove -y \
-    && rm -rf /var/lib/apt/lists/*
+# Install pip dependencies
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+
+# Install Gunicorn
+RUN pip install gunicorn
 
 # Expose the port
 EXPOSE 5000
 
-# Run app.py when the container launches
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "wsgi:app"]
+# Run app with gunicorn using Python 3.9 explicitly
+CMD ["/usr/local/bin/gunicorn", "--bind", "0.0.0.0:5000", "wsgi:app"]
