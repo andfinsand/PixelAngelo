@@ -11,6 +11,9 @@ COPY ./client/ .
 
 RUN npm run build
 
+# Check the contents of the build directory
+RUN ls /app/client/build
+
 # Build backend
 FROM python:3.9-slim-buster
 
