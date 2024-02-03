@@ -1,5 +1,5 @@
 # Stage 1: Building the code
-FROM node:14.17.3 AS builder
+FROM node:18.17.0 AS builder
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ COPY ./client/ .
 RUN npm run build
 
 # Stage 2: Run the Next.js app in production mode
-FROM node:14.17.3
+FROM node:18.17.0
 
 WORKDIR /app
 
