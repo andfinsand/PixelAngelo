@@ -3,7 +3,7 @@ import ExampleSlider from './ExampleSlider';
 const Examples = () => {
     return (
         <>
-            <div className='w-[320px] my-0 sm:w-[440px] md:w-[650px] sm:my-10'>
+            <div className='w-[350px] my-0 sm:w-[440px] md:w-[650px] sm:my-10'>
                 <h1 className='font-poppinsBold text-lg sm:text-2xl'>Upscale images by 2x using AI</h1>
 
                 {/* How it works */}
