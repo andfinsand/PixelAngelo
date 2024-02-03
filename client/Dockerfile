@@ -1,4 +1,4 @@
-# Stage 1: Building the code
+# Build frontend
 FROM node:18.17.0 AS builder
 
 WORKDIR /app
@@ -11,7 +11,7 @@ COPY ./client/ .
 
 RUN npm run build
 
-# Stage 2: Run the Next.js app in production mode
+# Run the Next.js app in production mode
 FROM node:18.17.0
 
 WORKDIR /app
