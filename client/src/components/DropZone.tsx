@@ -88,7 +88,7 @@ const DropZone = () => {
                 // Server API
                 const formData = new FormData();
                 formData.append('file', file);
-                return fetch('/pixelangelo-server-production.up.railway.app/', {
+                return fetch('https://pixelangelo-server-production.up.railway.app/', {
                     method: 'POST',
                     body: formData
                 })
