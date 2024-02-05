@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     letterSpacing: {
       wide: '.025em',
-      customSpacing: '.33em',
+      customSpacing: '.31em',
     },
     screens: {
       'sm': '520px',

@@ -26,7 +26,7 @@ const ExampleSlider = ({ label, exampleBefore, exampleAfter }: ExampleSliderProp
                 className='shrink-slider shadow-customShadow'
             />
             {/* Label */}
-            <div className='bg-dropZoneColorTo shadow-customShadow rounded-b-lg font-poppinsSemiBold text-center text-sm z-10 py-3 sm:text-base'>{label}</div>
+            <div className='bg-dropZoneColorTo shadow-customShadow rounded-b-lg font-poppinsSemiBold text-center text-sm z-10 py-3 sm:text-base md:text-sm'>{label}</div>
         </>
     );
 }

@@ -4,8 +4,8 @@ const Footer = () => {
     return (
         <>
             <div className='flex flex-col text-center gap-2 mb-5 sm:mb-9'>
-                <p className='text-[10px] font-light text-footerColor sm:text-xs'>Designed with Figma, built with Next.js and Flask</p>
-                <p className='text-[10px] font-light text-footerColor sm:text-xs'> By&nbsp;
+                <p className='text-xs font-light text-footerColor'>Designed with Figma, built with Next.js and Flask</p>
+                <p className='text-xs font-light text-footerColor'> By&nbsp;
 
                     {/* Portfolio link */}
                     <a

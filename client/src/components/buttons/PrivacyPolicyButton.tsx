@@ -7,7 +7,7 @@ const PrivacyPolicyButton = ({displayContent, setDisplayContent}: PrivacyPolicyB
     return (
         <>
             {/* Privacy policy button */}
-            <button className='flex text-lg font-poppinsBold hover:text-grayFont duration-200 sm:text-xl' onClick={() => setDisplayContent(!displayContent)}>
+            <button className='flex text-xl font-poppinsBold hover:text-grayFont duration-200 sm:text-2xl' onClick={() => setDisplayContent(!displayContent)}>
                 Privacy Policy
                 <span
                     className={`caret self-center duration-200 ml-3 ${displayContent ? 'transform rotate-90' : ''}`}
