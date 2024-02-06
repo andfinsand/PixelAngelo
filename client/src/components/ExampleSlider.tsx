@@ -12,7 +12,7 @@ const ExampleSlider = ({ label, exampleBefore, exampleAfter }: ExampleSliderProp
             {/* Before and after example images */}
             <ReactCompareSlider
                 itemOne={
-                <div className='relative text-center w-[350px] sm:w-[440px] md:w-[313px]'>
+                <div className='relative text-center w-full sm:w-[440px] md:w-[313px]'>
                     <div className='absolute top-4 left-4 bg-white/30 backdrop-blur rounded w-14 text-xs py-0.5 sm:w-20 sm:text-sm md:w-14 md:text-xs'>Before</div>
                     <ReactCompareSliderImage className='rounded-t-lg' src={exampleBefore} alt={`Example of ${label} - Original Image`} />
                 </div>

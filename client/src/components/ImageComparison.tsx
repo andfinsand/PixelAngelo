@@ -17,7 +17,7 @@ const ImageComparison = ({upscaledSrc, setUpscaledSrc, originalFileName, origina
     return (
         <div className='flex flex-col justify-center items-center'>
             { upscaledSrc && (
-                <div className='relative w-[350px] mt-5 sm:w-[440px] md:w-[650px]'>
+                <div className='relative w-11/12 mt-5 sm:w-[440px] md:w-[650px]'>
 
                     {/* Original and upscaled resolution sizes */}
                     <div className='flex justify-between text-xs text-white mb-3 md:text-sm'>

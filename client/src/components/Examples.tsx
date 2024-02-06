@@ -3,7 +3,7 @@ import ExampleSlider from './ExampleSlider';
 const Examples = () => {
     return (
         <>
-            <div className='w-[350px] my-0 sm:w-[440px] md:w-[650px] sm:my-10'>
+            <div className='w-11/12 my-0 sm:w-[440px] md:w-[650px] sm:my-10'>
                 <h1 className='font-poppinsBold text-xl sm:text-2xl'>Upscale images by 2x using AI</h1>
 
                 {/* How it works */}
@@ -20,7 +20,7 @@ const Examples = () => {
 
                 {/* Image examples */}
                 {/* First set */}
-                <div className='flex-col gap-6 mt-9 md:mt-10 md:flex md:flex-row'>
+                <div className='flex-col w-full gap-6 mt-9 md:mt-10 md:flex md:flex-row'>
                     {/* Faces */}
                     <div className='flex flex-col'>
                         <ExampleSlider
