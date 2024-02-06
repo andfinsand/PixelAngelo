@@ -8,7 +8,7 @@ const NewImageButton = ({clearImage}: NewImageButtonProps) => {
     return (
         <>
             {/* Upscale a new image button */}
-            <div className='flex justify-center my-7'>
+            <div className='flex justify-center mt-7'>
                 <button
                     className='svg flex hover:'
                     type='button'

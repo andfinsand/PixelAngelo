@@ -3,7 +3,7 @@ import Image from 'next/image';
 const Footer = () => {
     return (
         <>
-            <div className='flex flex-col text-center gap-2 mb-5 sm:mb-9'>
+            <div className='flex flex-col text-center gap-2 -mt-3 mb-9'>
                 <p className='text-xs font-light text-footerColor'>Designed with Figma, built with Next.js and Flask</p>
                 <p className='text-xs font-light text-footerColor'> By&nbsp;
 

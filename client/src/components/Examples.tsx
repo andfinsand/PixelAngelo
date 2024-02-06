@@ -3,11 +3,11 @@ import ExampleSlider from './ExampleSlider';
 const Examples = () => {
     return (
         <>
-            <div className='w-11/12 my-0 sm:w-[440px] md:w-[650px] sm:my-10'>
+            <div className='w-11/12 sm:w-[440px] md:w-[650px]'>
                 <h1 className='font-poppinsBold text-xl sm:text-2xl'>Upscale images by 2x using AI</h1>
 
                 {/* How it works */}
-                <h1 className='font-poppinsSemiBold text-lg mt-7'>How it works:
+                <h1 className='font-poppinsSemiBold text-lg mt-12'>How it works:
                     <span className='decorator'></span>
                 </h1>
                 <div className='font-poppinsLight text-sm mt-5 sm:leading-relaxed'>PixelAngelo uses AI to double image resolution while also enhancing quality. Select an image, wait for it to upscale, and download the newly upscaled image. Compare image resolution and quality using the slider. Users can submit up to 10 images per day.</div>

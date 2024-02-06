@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
 
     return (
         <>
-            <div className='w-11/12 my-0 sm:w-[440px] md:w-[650px] sm:my-10'>
+            <div className='w-11/12 sm:w-[440px] md:w-[650px]'>
 
                 {/* Privacy policy button */}
                 <PrivacyPolicyButton displayContent={displayContent} setDisplayContent={setDisplayContent}/>

@@ -3,7 +3,7 @@ import Image from 'next/image';
 const Header = () => {
     return (
         <>
-            <div className='flex mt-9'>
+            <div className='flex mt-9 -mb-3'>
                 <Image
                     src='/logo.png'
                     alt='PixelAngelo logo'

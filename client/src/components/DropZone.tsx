@@ -88,7 +88,7 @@ const DropZone = () => {
                 // Server API
                 const formData = new FormData();
                 formData.append('file', file);
-                return fetch('https://pixelangelo-server-production.up.railway.app/', {
+                return fetch('http://localhost:5000/', {
                     method: 'POST',
                     body: formData
                 })
@@ -180,7 +180,7 @@ const DropZone = () => {
                 <form
                     className={`${
                         dragIsActive ? "bg-dropZoneColorFrom brightness-105" : "bg-gradient-to-br from-dropZoneColorFrom to-dropZoneColorTo"
-                    } 'flex flex-col justify-center self-center rounded-lg shadow-customShadow w-11/12 h-[350px] m-0 p-4 sm:w-[440px] sm:h-[435px] sm:m-10 sm:p-6 md:w-[650px]`}
+                    } 'flex flex-col justify-center self-center rounded-lg shadow-customShadow w-11/12 h-[350px] p-4 sm:w-[440px] sm:h-[435px] sm:p-6 md:w-[650px]`}
 
                     // Drag and drop handlers
                     onDragEnter={handleDragEnter}

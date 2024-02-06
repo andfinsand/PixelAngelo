@@ -24,7 +24,7 @@ const DownloadButton = ({upscaledSrc, originalFileName}: DownloadButtonProps) =>
     return (
         <>
             {/* Downlaod image button */}
-            <div className='flex justify-center mt-16'>
+            <div className='flex justify-center mt-12'>
                 <button
                     className='btn-hover-effect drop-shadow-md rounded-md p-0.5 hover:drop-shadow-none'
                     type='button'
