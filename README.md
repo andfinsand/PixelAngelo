@@ -38,15 +38,19 @@ Original [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN) repository
 ---
 
 Original:
+
 ![faces-example-original](https://github.com/andfinsand/PixelAngelo/assets/88216761/0b083134-1f90-4e12-b94a-da6c876550b9)
 
 Results:
+
 ![faces-example-results](https://github.com/andfinsand/PixelAngelo/assets/88216761/fdc71086-af3f-4bd2-8d06-11bba5537360)
 
 ---
 
 Original:
+
 ![wildlife-example-original](https://github.com/andfinsand/PixelAngelo/assets/88216761/78c68298-2e92-466b-ae18-b1ac0b121fd6)
 
 Results:
+
 ![wildlife-example-results](https://github.com/andfinsand/PixelAngelo/assets/88216761/b5a8fde5-46c3-4cf6-9d74-105999665008)
