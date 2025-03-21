@@ -80,9 +80,9 @@ const DropZone = () => {
         image.onload = function () {
 
             // Maximum resolution checkpoint - keep within function to avoid async issues
-            if (image.width > 3500 || image.height > 3600) {
+            if (image.width > 2000 || image.height > 2000) {
                 setIsLoading(false);
-                setResolutionError('Image resolution exceeds the maximum allowed size of 1500 x 1500px');
+                setResolutionError('Image resolution exceeds the maximum allowed size of 2000 x 2000px');
             } else {
 
                 // Server API
@@ -234,7 +234,7 @@ const DropZone = () => {
                                                 <div className='bg-fileTypeContainer rounded-md py-1 px-2'>svg</div>
                                             </div>
                                             <div className='self-center mt-3 sm:mt-0 sm:ml-2.5'>
-                                                <div>up to 1500 x 1500px</div>
+                                                <div>up to 2000 x 2000px</div>
                                             </div>
                                         </div>
                                     </>
