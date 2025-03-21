@@ -77,10 +77,10 @@ const DropZone = () => {
         image.src = URL.createObjectURL(file);
 
         // Async - Display image after fetch
-        image.onload = function() {
+        image.onload = function () {
 
             // Maximum resolution checkpoint - keep within function to avoid async issues
-            if (image.width > 1500 || image.height > 1500) {
+            if (image.width > 3500 || image.height > 3600) {
                 setIsLoading(false);
                 setResolutionError('Image resolution exceeds the maximum allowed size of 1500 x 1500px');
             } else {
@@ -92,51 +92,51 @@ const DropZone = () => {
                     method: 'POST',
                     body: formData
                 })
-                .then(response => {
-                    // Fetch error
-                    if (!response.ok) {
-                        throw new Error('Failed to upload file');
-                    }
-                    return response.json();
-                })
+                    .then(response => {
+                        // Fetch error
+                        if (!response.ok) {
+                            throw new Error('Failed to upload file');
+                        }
+                        return response.json();
+                    })
 
-                // Set fetched upscaled image, original source, file name, and resolutions
-                .then(data => {
+                    // Set fetched upscaled image, original source, file name, and resolutions
+                    .then(data => {
 
-                    // Images
-                    const upscaledSrc = data['upscaled_path'];
-                    setUpscaledSrc(upscaledSrc);
-                    const getOriginalSrc = data['original_path']
-                    setOriginalSrc(getOriginalSrc)
-                    const originalFileName = data['unique_name']
-                    setOriginalFileName(originalFileName)
+                        // Images
+                        const upscaledSrc = data['upscaled_path'];
+                        setUpscaledSrc(upscaledSrc);
+                        const getOriginalSrc = data['original_path']
+                        setOriginalSrc(getOriginalSrc)
+                        const originalFileName = data['unique_name']
+                        setOriginalFileName(originalFileName)
 
-                    // Resolutions
-                    const originalWidth = data['original_width']
-                    setOriginalWidth(originalWidth)
-                    const originalHeight = data['original_height']
-                    setOriginalHeight(originalHeight)
-                    const upscaledWidth = data['upscaled_width']
-                    setUpscaledWidth(upscaledWidth)
-                    const upscaledHeight = data['upscaled_height']
-                    setUpscaledHeight(upscaledHeight)
+                        // Resolutions
+                        const originalWidth = data['original_width']
+                        setOriginalWidth(originalWidth)
+                        const originalHeight = data['original_height']
+                        setOriginalHeight(originalHeight)
+                        const upscaledWidth = data['upscaled_width']
+                        setUpscaledWidth(upscaledWidth)
+                        const upscaledHeight = data['upscaled_height']
+                        setUpscaledHeight(upscaledHeight)
 
-                    // Introduce a delay before setting loader to false to prevent screen flash
-                    setTimeout(() => {
-                        setIsLoading(false);
-                    }, 100);
-                })
+                        // Introduce a delay before setting loader to false to prevent screen flash
+                        setTimeout(() => {
+                            setIsLoading(false);
+                        }, 100);
+                    })
 
-                // Error handling
-                .catch(error => {
+                    // Error handling
+                    .catch(error => {
 
-                    // Introduce a delay before setting loader to false to prevent screen flash
-                    setTimeout(() => {
-                        setIsLoading(false);
-                    }, 100);
+                        // Introduce a delay before setting loader to false to prevent screen flash
+                        setTimeout(() => {
+                            setIsLoading(false);
+                        }, 100);
 
-                    console.error(error);
-                });
+                        console.error(error);
+                    });
             }
         }
     }
@@ -178,9 +178,8 @@ const DropZone = () => {
             {/* Dropzone */}
             {!upscaledSrc && (
                 <form
-                    className={`${
-                        dragIsActive ? "bg-dropZoneColorFrom brightness-105" : "bg-gradient-to-br from-dropZoneColorFrom to-dropZoneColorTo"
-                    } 'flex flex-col justify-center self-center rounded-lg shadow-customShadow w-11/12 h-[350px] p-4 sm:w-[440px] sm:h-[435px] sm:p-6 md:w-[650px]`}
+                    className={`${dragIsActive ? "bg-dropZoneColorFrom brightness-105" : "bg-gradient-to-br from-dropZoneColorFrom to-dropZoneColorTo"
+                        } 'flex flex-col justify-center self-center rounded-lg shadow-customShadow w-11/12 h-[350px] p-4 sm:w-[440px] sm:h-[435px] sm:p-6 md:w-[650px]`}
 
                     // Drag and drop handlers
                     onDragEnter={handleDragEnter}
