@@ -31,7 +31,7 @@ def upscale_image(path_to_original, scale_factor=2):
     # Get the model from the dictionary
     model = models[scale_factor]
 
-    # Get the image data from the bucket and convert to RGB
+    # Get the image data from the bucket and covert to RGB
     get_original = requests.get(path_to_original)
     image_data = get_original.content
     image = Image.open(io.BytesIO(image_data)).convert('RGB')
@@ -72,14 +72,13 @@ def handler(job):
     # Delete the temporary file
     os.remove(temp_path)
 
-    # Return response with CORS headers for frontend access
-    return {
-        "status": "success",
-        "message": f"Upscaled image saved as 'upscaled_{unique_filename}'",
-        "headers": {
-            "Access-Control-Allow-Origin": "*"  # Temporary wildcard, restrict later
-        }
-    }
+if __name__ == "__main__":
 
-# Start the serverless function
-runpod.serverless.start({"handler": handler})
+    # Start the serverless function with the handler and necessary input
+    runpod.serverless.start({
+        "handler": handler,
+        "input": {
+            "image_url": None,
+            "filename": None
+        }
+    })
