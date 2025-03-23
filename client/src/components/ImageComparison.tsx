@@ -13,11 +13,11 @@ type ImageComparisonProps = {
     upscaledHeight: number;
 }
 
-const ImageComparison = ({upscaledSrc, setUpscaledSrc, originalFileName, originalSrc, originalWidth, originalHeight, upscaledWidth, upscaledHeight }: ImageComparisonProps) => {
+const ImageComparison = ({ upscaledSrc, setUpscaledSrc, originalFileName, originalSrc, originalWidth, originalHeight, upscaledWidth, upscaledHeight }: ImageComparisonProps) => {
     return (
         <div className='flex flex-col justify-center items-center'>
-            { upscaledSrc && (
-                <div className='relative w-11/12 sm:w-[440px] md:w-[650px]'>
+            {upscaledSrc && (
+                <div className='relative w-11/12 max-w-[1000px] sm:w-full sm:px-5'>
 
                     {/* Original and upscaled resolution sizes */}
                     <div className='flex justify-between text-xs text-white mb-3 md:text-sm'>
