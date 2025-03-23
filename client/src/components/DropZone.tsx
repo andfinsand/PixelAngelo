@@ -189,10 +189,10 @@ const DropZone = () => {
                 >
 
                     {/* Dotted border */}
-                    <div className='relative flex justify-center border-2 border-dotted border-dottedColor rounded-md w-full h-full'>
+                    <div className='relative flex justify-center pointer-events-none border-2 border-dotted border-dottedColor rounded-md w-full h-full'>
 
                         {/* Content */}
-                        <div className='flex self-center'>
+                        <div className='flex self-center pointer-events-none'>
                             <div className='flex flex-col'>
 
                                 {/* Trigger loader on upload */}
@@ -221,7 +221,9 @@ const DropZone = () => {
                                         }
 
                                         {/* Upload button */}
-                                        <UploadButton setFile={setFile} processImageFile={processImageFile} />
+                                        <div className={`flex justify-center ${dragIsActive ? 'pointer-events-none' : 'pointer-events-auto'}`}>
+                                            <UploadButton setFile={setFile} processImageFile={processImageFile} />
+                                        </div>
 
                                         <div className='text-center text-grayFont text-[10px] mt-3 sm:text-xs sm:mt-5'>or drop image here</div>
 
