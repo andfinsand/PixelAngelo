@@ -1,17 +1,14 @@
-# Build frontend
 FROM node:18.17.0 AS builder
 
 WORKDIR /app
 
-COPY ./client/package.json ./client/package-lock.json* ./
+COPY package.json package-lock.json* ./
 
 RUN npm install
 
-COPY ./client/ .
+COPY . .
 
 RUN npm run build
-
-# Run the Next.js app in production mode
 
 FROM node:18.17.0
 
